@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Yoogy</title>
+    <link rel="stylesheet" href="../css/Blog.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+
+    <div id="navbar"></div>
+
+    <section id="hero-section">
+        <div id="hero-content">
+            <h2>Enlighten your well-being: tips and tricks for a healthy life</h2>
+            <p>Discover the secrets of balancing food and wellness for a radiant life.</p>
+        </div>
+    </section>
+
+    <section id="newest-article-section">
+        <div id="section-header">
+            <h3>Our Latest Article</h3>
+        </div>
+        <div id="newest-article">
+            <img src="../images/image-blog-1.jpg" alt="Meditation Image" id="newest-article-image">
+            <div id="newest-article-content">
+                <span class="category-label">Health</span>
+                <h4>How to meditate well?</h4>
+                <p>Breathing plays an essential role in our well-being. Follow the advice of Dr. Marie.</p>
+                <a href="/html/Blog_4.html" id="read-article-btn">Read Article</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="blog" class="appear">
+        
+        <div class="blog-heading">
+            <span>Articles</span>
+            <h3>Discover our other articles</h3>
+        </div>
+
+        <input type="text" id="search" onkeyup="searchEvents()" placeholder="Search Articles">
+        <div class="blog-container">
+    
+            <!--box 1-->
+            <div class="blog-box appear">
+                <div class="blog-img">
+                    <img src="../images\image-blog-2.jpg" alt="Blog">
+                </div>
+
+                <div class="blog-text">
+                    <span>Jan 29, 2024 | Health</span>
+                    <a href="/html/Blog_3.html" class="blog-title">Exploring the different styles of Yoga</a>
+                    <p>Breathing plays an essential role in our well-being. Follow the advice of Dr. Marie</p>
+                    <a href="/html/Blog_3.html">Read More</a>
+                </div>
+            </div>
+
+            <!--box 2-->
+            <div class="blog-box appear">
+                <div class="blog-img">
+                    <img src="../images\image-blog-3.jpg" alt="Blog">
+                </div>
+
+                <div class="blog-text">
+                    <span>Jan 29, 2024 | Health</span>
+                    <a href="/html/Blog_2.html" class="blog-title">Yoga and mindfulness for kids</a>
+                    <p>Breathing plays an essential role in our well-being. Follow the advice of Dr. Marie</p>
+                    <a href="/html/Blog_2.html">Read More</a>
+                </div>
+            </div>
+
+            <!--box 3-->
+            <div class="blog-box appear">
+                <div class="blog-img">
+                    <img src="../images\image-blog-4.jpg" alt="Blog">
+                </div>
+
+                <div class="blog-text">
+                    <span>Jan 29, 2024 | Health</span>
+                    <a href="/html/Blog_1.html" class="blog-title">Yoga for sleep: Evening Routines for better rest</a>
+                    <p>Breathing plays an essential role in our well-being. Follow the advice of Dr. Marie</p>
+                    <a href="/html/Blog_1.html">Read More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer"></div>
+
+    <script src="../js/Blog.js"></script>
+    <script src="../js/Navbar.js?v=1" defer></script>
+    
+</body>
+</html>

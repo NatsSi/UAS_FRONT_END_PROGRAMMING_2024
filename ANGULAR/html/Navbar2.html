@@ -1,0 +1,155 @@
+<head>
+    <style>
+        * {
+            font-family: 'Poppins';
+            text-decoration: none;
+            scroll-behavior: smooth;
+        }
+
+        #nav {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            padding: 1% 9% 1% 9%;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        #hamburger {
+            display: none;
+        }
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            transition: all 0.3s ease-in-out;
+            background-color: #101010;
+        }
+
+        #logo h1 {
+            font-size: 24px;
+            color: #5b6d38;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li {
+            font-size: 18px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            position: relative;
+            display: inline-block;
+            padding: 8px 15px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #3a5233;
+            transform: scale(1.05);
+        }
+
+        nav ul li a::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: #3a5233;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover::before {
+            width: 100%;
+            left: 0;
+        }
+
+        .active-nav::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            left: 0;
+            height: 2px;
+            background-color: #3a5233;
+            transition: all 0.3s ease;
+        }
+
+
+        @media (max-width: 768px) {
+
+            nav ul {
+                position: fixed;
+                left: -100%;
+                top: 3rem;
+                flex-direction: column;
+                background-color: #fff;
+                width: 100%;
+                border-radius: 10px;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+                padding-bottom: 40px;
+            }
+
+            nav ul.active {
+                left: 0;
+            }
+
+            nav li {
+                margin: 0.05rem 0;
+            }
+
+            #hamburger {
+                display: block;
+                cursor: pointer;
+            }
+
+            #hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            #hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            #hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+        }
+    </style>
+</head>
+
+<link rel="stylesheet" href="../css/Navbar.css" class="">
+<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+<div id="nav">
+    <div id="logo">
+        <a href="/html/Home.html">
+            <h1>Yogo</h1>
+        </a>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="/html/Home_2.html" class="nav-link">Home</a></li>
+            <li><a href="/html/Recipes.html" class="nav-link">Recipes</a></li>
+            <li><a href="/html/Events.html" class="nav-link">Events</a></li>
+            <li><a href="/html/Blog.html" class="nav-link">Blog</a></li>
+            <li><a href="/html/Home.html" class="nav-link subscribe">Logout</a></li>
+        </ul>
+        <div id="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+</div>

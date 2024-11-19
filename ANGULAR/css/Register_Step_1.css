@@ -1,0 +1,91 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fff;
+    min-height: 100vh;
+}
+
+.container {
+    width: 400px;
+    padding: 20px;
+    text-align: center;
+    background-color: #fff; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+}
+
+
+.step-indicator {
+    font-size: 0.9em;
+    color: #999;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+p {
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.membership-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.membership-form label {
+    font-size: 0.9em;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.membership-form input[type="email"],
+.membership-form input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 1em;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+}
+
+.membership-form input[type="checkbox"] {
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color:#3c4a28;
+    color: white;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; 
+}
+
+.submit-btn:hover {
+    background-color: #2f431e; 
+    transform: scale(1.05); 
+}

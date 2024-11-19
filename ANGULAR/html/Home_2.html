@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Yoggy</title>
+    <link rel="stylesheet" href="../css/Home_2.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="navbar">
+    </div>
+
+    <section class="hero appear">
+        <div class="hero-content appear">
+            <h2>Welcome to Yogo</h2>
+            <p>Ready to be a well-being?</p>
+        </div>
+
+        <div class="hero-images">
+            <img src="../images/image-blog-1.jpg" alt="Meditation Image">
+            <img src="../images\image-blog-2.jpg" alt="Blog">
+            <img src="../images\image-blog-3.jpg" alt="Blog">
+        </div>
+    </section>
+
+    <section class="newest-videos">
+        <div class="newest-videos-content appear">
+            <h3>VIDEOS</h3>
+            <h2>New videos just came out</h2>
+            <p>Discover a variety of yoga tutorials and tips designed to suit beginners and experienced practitioners alike.</p>
+        </div>
+    
+        <div class="slider appear">
+            <div class="list">
+                <div class="item active">
+                        <img src="../images/home2/slide1.png" alt="Slider 1">
+                        <div class="content">
+                            <p>Dr. Hansaji Yogendra</p>
+                            <h2>Important things to do after Yoga Practice</h2>
+                            <a class="cta-button" href="#" data-video-src="../videos/Video1.mp4">Watch <i class="fa-solid fa-eye"></i></a>
+                            <div class="favorite-icon" data-id="1" data-video-src="video1.mp4" data-title="Important things to do after Yoga Practice" data-image="../images/home2/slide1.png">
+                                <i class="fa-heart fa-regular"></i>
+                            </div>
+                        </div>
+                </div>
+    
+                <div class="item">
+                        <img src="../images/home2/slide2.png" alt="Slider 2">
+                        <div class="content">
+                            <p>Dr. Hansaji Yogendra</p>
+                            <h2>Yoga for PCOS, Hormonal Imbalances & Irregular Periods</h2>
+                            <a class="cta-button" href="#" data-video-src="../videos/Video2.mp4">Watch <i class="fa-solid fa-eye"></i></a>
+                            <div class="favorite-icon" data-id="2" data-video-src="video2.mp4" data-title="Yoga for PCOS, Hormonal Imbalances & Irregular Periods" data-image="../images/home2/slide2.png">
+                                <i class="fa-heart fa-regular"></i>
+                            </div>
+
+                        </div>
+                </div>
+    
+                <div class="item">
+                        <img src="../images/home2/slide3.png" alt="Slider 3">
+                        <div class="content">
+                            <p>SCImplify</p>
+                            <h2>Basic Yoga Asanas for Good Health</h2>
+                            <a class="cta-button" href="#" data-video-src="../videos/Video3.mp4">Watch <i class="fa-solid fa-eye"></i></a>
+                            <div class="favorite-icon" data-id="3" data-video-src="video3.mp4" data-title="Basic Yoga Asanas for Good Health" data-image="../images/home2/slide3.png">
+                                <i class="fa-heart fa-regular"></i>
+                            </div>
+
+                        </div>
+                </div>
+            </div>
+    
+            <div class="arrows">
+                <button id="prev">
+                    <</button>
+                        <button id="next">></button>
+            </div>
+    
+            <div class="dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+
+            <div id="video-container">
+                <button id="close-video">&times;</button>
+                <video id="video-player" width="640" height="360" controls>
+                    <source id="video-source" src="" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <section class="services">
+        <div class="services-grid">
+            <div class="service-item one appear" data-video-src="../videos/Video3.mp4">
+                <h3>VIDEOS</h3>
+                <h2>Yoga pose for you this week</h2>
+                <p>Explore the world of yoga with our curated video classes, perfect for all skill levels.</p>
+            </div>
+
+            <div class="service-item two appear" data-video-src="../videos/video4.mp4">
+                <img src="../images/brian-lawson-6pVaNHbH4fU-unsplash.jpg" alt="Hatha Yoga">
+                <div class="service-overlay">
+                    <h4>Hatha Yoga</h4>
+                    <div class="favorite-icon" data-id="4" data-video-src="video4.mp4" data-title="Hatha Yoga Tutorial"
+                        data-image="../images/brian-lawson-6pVaNHbH4fU-unsplash.jpg">
+                        <i class="fa-heart fa-regular"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="service-item three appear" data-video-src="../videos/Video5.mp4">
+                <img src="../images/image-blog-detail-1.jpg" alt="Vinyasa Yoga">
+                <div class="service-overlay">
+                    <h4>Vinyasa Yoga</h4>
+                    <div class="favorite-icon" data-id="5" data-video-src="video5.mp4" data-title="Vinyasa Yoga Tutorial"
+                        data-image="../images/image-blog-detail-1.jpg">
+                        <i class="fa-heart fa-regular"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="video-container">
+            <button id="close-video">&times;</button>
+            <video id="video-player" width="640" height="360" controls>
+                <source id="video-source" src="" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </section>
+
+    <section class="daily-quiz appear">
+        <div class="quiz-intro">
+            <h3>Daily Quiz</h3>
+            <p>Test your knowledge about yoga and wellness!</p>
+        </div>
+    
+        <div class="quiz-container">
+            <div id="quiz" class="quiz">
+                <div id="question-container" class="question-container">
+                    <h4 id="question"></h4>
+                    <div id="answer-buttons" class="answer-buttons"></div>
+                </div>
+                <button id="next-button" class="next-button" onclick="nextQuestion()">Next</button>
+            </div>
+            <div id="result-container" class="result-container">
+                <h4>Your Score: <span id="score"></span></h4>
+                <button id="restart-button" class="restart-button" onclick="restartQuiz()">Restart Quiz</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="yoga-mentor">
+        <div class="mentor-intro">
+            <h3>MENTOR</h3>
+            <h2>Upcoming New Yogo Mentor</h2>
+            <p>These skillful mentor will guide you to imporove your well-being</p>
+        </div>
+
+        <div class="mentor-content appear">
+            <div class="mentor-info appear">
+                <img src="../images/home2/author1.png" class="author-img">
+                <div class="mentor-detail">
+                    <h3>Backer Shelby</h3>
+                    <span>YOOGIST</span> 
+                    <div class="cta-button">Details<i class="fa-solid fa-eye"></i></div>
+                </div>
+            </div>
+
+            <div class="mentor-info appear">
+                <img src="../images/home2/author2.png" class="author-img">
+                <div class="mentor-detail">
+                    <h3>Brenda Wilstone</h3>
+                    <span>NUTRIONIST</span>
+                    <div class="cta-button">Details<i class="fa-solid fa-eye"></i></div>
+                </div>
+            </div>
+
+            <div class="mentor-info appear">
+                <img src="../images/home2/author3.png" class="author-img">
+                <div class="mentor-detail">
+                    <h3>Freya Zulie</h3>
+                    <span>YOOGIST</span>
+                    <div class="cta-button">Details<i class="fa-solid fa-eye"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="more-content appear">
+        <div class="recipe-intro appear">
+            <h3>MORE CONTENT</h3>
+            <h2>Recipes for this summer</h2>
+        </div>
+
+        <div class="recipes-list appear">
+            <div class="recipe-card appear" onclick="location.href='Recipe_1.html'">
+                <div class="recipe-image">
+                    <img src="../images/recipes/avocado.jpg" alt="Avocado">
+                </div>
+                <div class="recipe-content">
+                    <h3>Avocado Toast with Eggs</h3>
+                    <p>A quick and nutritious breakfast option packed with healthy fats and protein.</p>
+                </div>
+            </div>
+        
+            <div class="recipe-card appear" onclick="location.href='Recipe_3.html'">
+                <div class="recipe-image">
+                    <img src="../images/recipes/quinoa-salad.jpg" alt="Green Detox">
+                </div>
+                <div class="recipe-content">
+                    <h3>Quinoa Salad</h3>
+                    <p>A light and energizing salad that's rich in fiber and plant-based protein.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="favorites">
+        <h3>Your Favorites Videos</h3>
+        <input type="text" id="search-favorites" placeholder="Search favorite videos..." />
+        <div id="favorites-list" class="favorites-list appear"></div>
+    </section>
+
+    <div id="footer"></div>
+
+    <script src="../js/Quiz.js" defer></script>
+    <script src="../js/Navbar2.js?v=1" defer></script>
+    <script src="../js/Home2.js" defer></script>
+    <script src="../js/Home_2_Slider.js" defer></script>
+    <script src="../js/Videos.js" defer></script>
+    <script src="../js/Favorites.js" defer></script>
+</body>
+
+</html>
