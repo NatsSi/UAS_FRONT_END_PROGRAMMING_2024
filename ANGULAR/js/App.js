@@ -3,9 +3,17 @@ var yogo = angular.module('yogo', ['ngRoute', 'appControllers']);
 yogo.config(function ($routeProvider, $locationProvider) {
     $locationProvider.hashPrefix('');
     $routeProvider
-    .when("/", {
-        templateUrl: "/home",
-        controller: "MainController"
+    .when("/ANGULAR/html/Dashboard/list-event.html", {
+        templateUrl: "list-event.html",
+        controller: "EventsController"
+    })
+    .when("/ANGULAR/html/Dashboard/create-event.html", {
+        templateUrl: "create-event.html",
+        controller: "EventsController"
+    })
+    .when("/ANGULAR/html/Dashboard/update-event.html", {
+        templateUrl: "update-event.html",
+        controller: "EventsController"
     })
     .otherwise({
         redirectTo: "/"
