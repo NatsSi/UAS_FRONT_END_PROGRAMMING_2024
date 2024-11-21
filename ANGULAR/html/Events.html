@@ -1,14 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="yogo">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events</title>
     <link rel="stylesheet" href="../css/Events.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <script src="../js/angular.min.js"></script>
+    <script src="../js/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-sanitize.min.js"></script>
+    <script src="../js/Controller.js"></script>
+    <script src="../js/App.js"></script>
 </head>
-<body>
+<body ng-controller="EventsController">
     <div id="navbar"></div>
-
       <div id="container-one">
         <div id="text-content" class="appear">
             <h1>For a better connection</h1>
@@ -80,57 +85,22 @@
       </div>
 
         <input type="text" id="search" onkeyup="searchEvents()" placeholder="Search Events">
-
-      <!-- Event Cards -->
-      <div class="appear3" id="event-cards">
-          <!-- Card 1 -->
-          <div class="event-card appear4">
-              <img src="../images/chermiti-mohamed-fk5RgUiYpVw-unsplash.jpg" alt="Tunis Image">
-              <div class="event-date">
-                  <img src="../images/icons8-clock.svg" alt="Clock Icon"> Mar 5, 2024
-              </div>
-              <div class="event-info">
-                  <div class="event-category">Health</div>
-                  <div class="event-title">Retirement in Tunisie</div>
-                  <div class="event-description">Welcome to the eternal serenity of Tunisia, a place where retreat takes on a whole new meaning.</div>
-                  <a href="Events_1.html" class="btn">
-                      Participate
-                  </a>
-              </div>
-          </div>
-
-          <!-- Card 2 -->
-          <div class="event-card appear4">
-              <img src="../images/bady-abbas-Qsw3tv7hRiY-unsplash.jpg" alt="Bali Image">
-              <div class="event-date">
-                  <img src="../images/icons8-clock.svg" alt="Clock Icon"> Mar 8, 2024
-              </div>
-              <div class="event-info">
-                  <div class="event-category">Health</div>
-                  <div class="event-title">Retirement in Bali</div>
-                  <div class="event-description">Welcome to the eternal serenity of Bali, a place where retreat takes on a whole new meaning.</div>
-                  <a href="Events_2.html" class="btn">
-                      Participate
-                  </a>
-              </div>
-          </div>
-
-          <!-- Card 3 -->
-          <div class="event-card appear4">
-              <img src="../images/ravi-n-jha-aU9yXmIwfkw-unsplash.jpg" alt="India Image">
-              <div class="event-date">
-                  <img src="../images/icons8-clock.svg" alt="Clock Icon"> Feb 16, 2024
-              </div>
-              <div class="event-info">
-                  <div class="event-category">Health</div>
-                  <div class="event-title">Retirement in India</div>
-                  <div class="event-description">Welcome to the eternal serenity of India, a place where retreat takes on a whole new meaning.</div>
-                  <a href="Events_3.html" class="btn">
-                      Participate
-                  </a>
-              </div>
-          </div>
-      </div>
+        <div class="appear3" id="event-cards">
+            <div ng-repeat="data in datas" class="event-card">
+                <img src="../images/chermiti-mohamed-fk5RgUiYpVw-unsplash.jpg" alt="Tunis Image">
+                <div class="event-date">
+                    <img src="../images/icons8-clock.svg" alt="Clock Icon"> {{ data.attributes.date | date:'MMM d, yyyy'  }}
+                </div>
+                <div class="event-info">
+                    <div class="event-category">{{ data.attributes.category  }}</div>
+                    <div class="event-title">{{ data.attributes.title  }}</div>
+                    <div class="event-description">{{ data.attributes.sub_message  }}</div>
+                    <a href="Events_1.html#" class="btn" ng-click="getEventId(data.id)">
+                        Participate
+                    </a>
+                </div>
+            </div>
+        </div>
   </div>
 
   <div id="footer"></div>

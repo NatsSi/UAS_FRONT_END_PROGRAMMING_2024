@@ -22,6 +22,8 @@ class Event extends Model
     protected $fillable = [
         'title',
         'day',
+        'place',
+        'category',
         'date',
         'message',
         'sub_message',

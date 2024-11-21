@@ -6,6 +6,8 @@ appControllers.controller('RecipesController', ['$scope', '$http', function ($sc
 
 appControllers.controller('EventsController', ['$scope', '$http', '$window', function ($scope, $http, $window, CSRF_TOKEN) {
     $scope.formData = {};
+    $scope.formDataCreate = {};
+    $scope.data = {};
     $scope.eventId = localStorage.getItem('eventId');
 
     $http.get('http://127.0.0.1:8001/api/v1/events').then(function(response){
@@ -14,7 +16,24 @@ appControllers.controller('EventsController', ['$scope', '$http', '$window', fun
 
     $http.get('http://127.0.0.1:8001/api/v1/events/' + localStorage.getItem('eventId')).then(function(response){
         $scope.data = response.data.events;
+        $scope.formData = {
+            title : $scope.data.attributes.title ,
+            place : $scope.data.attributes.place,
+            category : $scope.data.attributes.category,
+            day : $scope.data.attributes.day,
+            date  : $scope.data.attributes.date,
+            message  : $scope.data.attributes.message,
+            sub_message  : $scope.data.attributes.sub_message,
+            author_1  : $scope.data.attributes.author_1,
+            job_author_1  : $scope.data.attributes.job_author_1,
+            author_2  : $scope.data.attributes.author_2,
+            job_author_2  : $scope.data.attributes.job_author_2,
+            image  : $scope.data.attributes.image,
+            header  : $scope.data.attributes.header,
+            body : $scope.data.attributes.body 
+        };
     });
+
 
     $scope.getEventId = function(eventId) {
         localStorage.setItem('eventId', eventId);
@@ -24,7 +43,7 @@ appControllers.controller('EventsController', ['$scope', '$http', '$window', fun
         $http({
             method: 'POST',
             url: 'http://127.0.0.1:8001/api/v1/create-event', // Ganti dengan URL API Laravel Anda
-            data: $scope.formData,
+            data: $scope.formDataCreate,
             headers: {
                 'Content-Type': 'application/json',
                 'X-CSRF-TOKEN': CSRF_TOKEN,

@@ -25,18 +25,13 @@ class EventController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|unique:events|max:255',
-            'day' => 'required',
-            'date' => 'required|date',
-            'message' => 'required',
-            'sub_message' => 'required',
-            'author_1' => 'required',
-            'job_author_1' => 'required',
-            'header' => 'required',
-            'body' => 'required'
+    
         ]);
 
         $event = Event::create([
             'title' => $request->input('title'),
+            'place' => $request->input('place'),
+            'category' => $request->input('category'),
             'day' => $request->input('day'),
             'date' => $request->input('date'),
             'message' => $request->input('message'),
@@ -69,11 +64,13 @@ class EventController extends Controller
     public function update(Request $request, Event $event)
     {
         $validated = $request->validate([
-            'title' => 'required|unique:events|max:255'
+            'title' => 'max:255'
         ]);
 
         $event->update([
             'title' => $request->input('title'),
+            'place' => $request->input('place'),
+            'category' => $request->input('category'),
             'day' => $request->input('day'),
             'date' => $request->input('date'),
             'message' => $request->input('message'),

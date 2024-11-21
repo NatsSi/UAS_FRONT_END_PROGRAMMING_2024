@@ -8,6 +8,7 @@
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <script src="../../js/angular.min.js"></script>
     <script src="../../js/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-sanitize.min.js"></script>
     <script src="../../js/Controller.js"></script>
     <script src="../../js/App.js"></script>
 </head>
@@ -19,42 +20,58 @@
         <h2  class="text-center mt-1">Update Event</h2>
         <form ng-submit="updateEvent(eventId)">    
             <label class="form-label" for="title">Title</label><br>
-            <input class="form-control" type="text" id="title" name="title" value="{{data.attributes.title}}" ng-model="formData.title"><br>
+            <input class="form-control" type="text" id="title" name="title" ng-model="formData.title" ><br>
+
+            <label class="form-label" for="place">Place</label><br>
+            <input class="form-control" type="text" id="place" name="place" ng-model="formData.place"><br>
+
+            <label class="form-label" for="category">Category</label>
+            <select class="form-control" id="category" name="category" ng-model="formData.category">
+                    <option value="Health" ng-selected="data.attributes.category === 'Health'">Health</option>
+                    <option value="Travel" ng-selected="data.attributes.category === 'Travel'">Travel</option>
+                    <option value="Environment" ng-selected="data.attributes.category === 'Environment'">Environment</option>
+            </select><br>
 
             <label class="form-label" for="day">Day</label>
             <select class="form-control" id="day" name="day" ng-model="formData.day">
-                    <option value="senin" ng-selected="data.attributes.day === 'senin'">Senin</option>
-                    <option value="selasa" ng-selected="data.attributes.day === 'selasa'">Selasa</option>
-                    <option value="rabu" ng-selected="data.attributes.day === 'rabu'">Rabu</option>
-                    <option value="kamis" ng-selected="data.attributes.day === 'kamis'">Kamis</option>
-                    <option value="jumat" ng-selected="data.attributes.day === 'jumat'">Jumat</option>
-                    <option value="sabtu" ng-selected="data.attributes.day === 'sabtu'">Sabtu</option>
-                    <option value="minggu" ng-selected="data.attributes.day === 'minggu'">Minggu</option>
+                    <option value="Senin" ng-selected="data.attributes.day === 'Senin'">Senin</option>
+                    <option value="Selasa" ng-selected="data.attributes.day === 'Selasa'">Selasa</option>
+                    <option value="Rabu" ng-selected="data.attributes.day === 'Rabu'">Rabu</option>
+                    <option value="Kamis" ng-selected="data.attributes.day === 'Kamis'">Kamis</option>
+                    <option value="Jumat" ng-selected="data.attributes.day === 'Jumat'">Jumat</option>
+                    <option value="Sabtu" ng-selected="data.attributes.day === 'Sabtu'">Sabtu</option>
+                    <option value="Minggu" ng-selected="data.attributes.day === 'Minggu'">Minggu</option>
             </select><br>
 
             <label class="form-label" for="date">Date</label><br>
-            <input class="form-control" type="text" id="date" name="date" ng-model="formData.date" value="data.attributes.date"><br>
+            <input class="form-control" type="text" id="date" name="date" ng-model="formData.date"><br>
 
             <label class="form-label" for="message">Message</label><br>
             <textarea class="form-control" name="message" rows="2" cols="100" ng-model="formData.message"></textarea><br>
 
             <label class="form-label" for="sub_message">Sub Message</label><br>
-            <textarea class="form-control" name="sub_message" rows="3" cols="100" ng-model="formData.sub_message"></textarea><br>
+            <textarea class="form-control" name="sub_message" rows="3" cols="100" ng-model="formData.sub_message" ></textarea><br>
 
             <label class="form-label" for="author_1">Author 1</label><br>
-            <input class="form-control" type="text" id="author_1" name="author_1" ng-model="formData.author_1"><br>
+            <input class="form-control" type="text" id="author_1" name="author_1" ng-model="formData.author_1" ><br>
 
             <label class="form-label" for="job_author_1">Job Author 1</label><br>
-            <input class="form-control" type="text" id="job_author_1" name="job_author_1" ng-model="formData.job_author_1"><br>
+            <input class="form-control" type="text" id="job_author_1" name="job_author_1" ng-model="formData.job_author_1" ><br>
+
+            <label class="form-label" for="author_2">Author 2</label><br>
+            <input class="form-control" type="text" id="author_2" name="author_2" ng-model="formData.author_2" ><br>
+
+            <label class="form-label" for="job_author_2">Job Author 2</label><br>
+            <input class="form-control" type="text" id="job_author_2" name="job_author_2" ng-model="formData.job_author_2" ><br>
 
             <label class="form-label mt-2" for="image">Image</label>
             <input class="form-control" type="file" id="image" name="image" ng-model="formData.image"><br>
 
             <label class="form-label" for="header">Header</label><br>
-            <textarea class="form-control" name="header" rows="2" cols="100" ng-model="formData.header"></textarea><br>
+            <textarea class="form-control" name="header" rows="2" cols="100" ng-model="formData.header" ></textarea><br>
 
             <label class="form-label" for="body">Body</label><br>
-            <textarea class="form-control" name="body" rows="10" cols="100" ng-model="formData.body"></textarea><br>
+            <textarea class="form-control" name="body" rows="10" cols="100" ng-model="formData.body" ></textarea><br>
     
             <input type="submit" value="Update" class="btn btn-primary mb-2 text-center">
         </form>

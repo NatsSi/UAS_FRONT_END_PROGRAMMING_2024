@@ -8,6 +8,7 @@
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <script src="../../js/angular.min.js"></script>
     <script src="../../js/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-sanitize.min.js"></script>
     <script src="../../js/Controller.js"></script>
     <script src="../../js/App.js"></script>
 </head>
@@ -28,9 +29,10 @@
                 <tr>
                     <th>No.</th>
                     <th>Title</th>
+                    <th>Place</th>
+                    <th>Category</th>
                     <th>Day</th>
                     <th>Date</th>
-                    <th>Header</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -39,9 +41,10 @@
                 <tr ng-repeat="data in datas">
                     <td>{{ $index + 1 }}</td>
                     <td>{{ data.attributes.title }}</td>
+                    <td>{{ data.attributes.place }}</td>
+                    <td>{{ data.attributes.category }}</td>
                     <td>{{ data.attributes.day }}</td>
                     <td>{{ data.attributes.date | date:'MMM d, yyyy' }}</td>
-                    <td>{{ data.attributes.header }}</td>
                     <td>
                         <a href="update-event.html#"><button type="submit" class="btn btn-sm btn-info text-light" ng-click="getEventId(data.id)">Edit</button></a>
                         <button type="submit" class="btn btn-sm btn-danger" ng-click="deleteEvent(data.id)">Delete</button>

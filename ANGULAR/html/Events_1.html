@@ -1,25 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="yogo">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tunisie</title>
     <link rel="stylesheet" href="../css/Events_Detail.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <script src="../js/angular.min.js"></script>
+    <script src="../js/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-sanitize.min.js"></script>
+    <script src="../js/Controller.js"></script>
+    <script src="../js/App.js"></script>
 </head>
-<body>
+<body ng-controller="EventsController">
 
     <div id="navbar"></div>
-
+ <h1>
+ 
+ </h1>
     <section id="hero">
         <div id="hero-content">
-            <h1>Welcome for the retirement in Tunisie</h1>
-            <p>Welcome to the eternal serenity of Tunisie, a place where retreat takes on a whole new meaning.</p>
+            <h1>{{data.attributes.message}}</h1>
+            <p>{{data.attributes.sub_message}}</p>
             <div id="profile-section">
                 <div class="profile">
-                    <span>Pheonix Baker<br><small>Nutritionist</small></span>
+                    <span>{{data.attributes.author_1}}<br><small>{{data.attributes.job_author_1}}</small></span>
                 </div>
                 <div class="profile">
-                    <span>Sam Altman<br><small>Nutritionist</small></span>
+                    <span>{{data.attributes.author_2}}<br><small>{{data.attributes.job_author_2}}</small></span>
                 </div>
             </div>
             <div id="hero-form">
@@ -35,21 +43,13 @@
         <div id="content-header">
             <div id="image-content">
                 <div id="retirement-label">
-                    <span>Retirement in Tunisie</span>
-                    <span>Mar 5, 2024</span>
+                    <span>{{data.attributes.title}}</span>
+                    <span>{{ data.attributes.date | date:'MMM d, yyyy'  }}</span>
                 </div>
                 <img src="../images/chermiti-mohamed-fk5RgUiYpVw-unsplash.jpg" alt="Spa Bath">
             </div>
-            <h2>Yoogy retreat in Tunisie: Awaken the harmony of body, mind, and soul</h2>
-            <p>By choosing to begin this new phase of your life in the land rich in spirituality and tradition, you are opening yourself to a unique experience that goes beyond the simple transition to retirement. Explore the inner treasures of your being while immersing yourself in the soothing atmosphere of Tunisie.</p>
-            <br>
-            <p>Your retreat in Tunisie will be more than just a moment of rest; it will be a deep immersion in the practice of yoga, an invitation to reconnect your mind, body and soul. In the shadow of the majestic Himalayan mountains or on the peaceful beaches of Goa, discover the magic of ancient postures, guided meditation and breathing techniques that transcend time.</p>
-            <br>
-            <p>The soft rays of the Indian sun caressing your face every morning will serve as a backdrop for your revitalizing yoga sessions. Strengthen your physical flexibility while releasing mental tension, allowing each asana to become a celebration of regained vitality.</p>
-            <br>
-            <p>The exquisite flavors of healthy and balanced Indian cuisine will nourish your body, while the teachings of local yoga masters will nourish your mind. Learn to integrate the millennial philosophy of yoga into your daily life, creating a solid foundation for a fulfilling retreat.</p>
-            <br>
-            <p>Welcome to India, where yoga becomes much more than a practice, it is a daily celebration of your well-being and retirement.</p>
+            <h2>{{data.attributes.header}}</h2>
+            <div ng-bind-html="data.attributes.body"></div>
         </div>
     </section>
 

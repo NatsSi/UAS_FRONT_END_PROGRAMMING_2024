@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('day');
-            $table->date('date');            
+            $table->string('place');
+            $table->string('category');
+            $table->date('date');  
             $table->text('message');
             $table->text('sub_message');  
             $table->string('author_1');  
