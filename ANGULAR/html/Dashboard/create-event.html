@@ -17,7 +17,7 @@
     <div id="navbar-dashboard"></div>
     <div class="container mb-5 mt-3 border rounded" style="width:1000px">
         <h2  class="text-center mt-1">Create Event</h2>
-        <form ng-submit="createEvent()">    
+        <form ng-submit="createEvent()"  enctype="multipart/form-data">    
             <label class="form-label" for="title">Title</label><br>
             <input class="form-control" type="text" id="title" name="title" ng-model="formData.title"><br>
 
@@ -48,8 +48,8 @@
             <label class="form-label" for="job_author_1">Job Author 1</label><br>
             <input class="form-control" type="text" id="job_author_1" name="job_author_1" ng-model="formData.job_author_1"><br>
 
-            <label class="form-label mt-2" for="image">Image</label>
-            <input class="form-control" type="file" id="image" name="image" ng-model="formData.image"><br>
+            <label class="form-label" for="image">Image</label>
+            <input class="form-control" type="file" id="image" name="image" ng-model="formData.image" accept="image/*"><br>
 
             <label class="form-label" for="header">Header</label><br>
             <textarea class="form-control" name="header" rows="2" cols="100" ng-model="formData.header"></textarea><br>

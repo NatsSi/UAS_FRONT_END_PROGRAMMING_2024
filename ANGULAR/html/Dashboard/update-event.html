@@ -19,22 +19,21 @@
         <h2  class="text-center mt-1">Update Event</h2>
         <form ng-submit="updateEvent(eventId)">    
             <label class="form-label" for="title">Title</label><br>
-            <input class="form-control" type="text" id="title" name="title" ng-model="formData.title"><br>
+            <input class="form-control" type="text" id="title" name="title" value="{{data.attributes.title}}" ng-model="formData.title"><br>
 
             <label class="form-label" for="day">Day</label>
             <select class="form-control" id="day" name="day" ng-model="formData.day">
-                    <option selected disabled>Select</option>
-                    <option value="senin">Senin</option>
-                    <option value="selasa">Selasa</option>
-                    <option value="rabu">Rabu</option>
-                    <option value="kamis">Kamis</option>
-                    <option value="jumat">Jumat</option>
-                    <option value="sabtu">Sabtu</option>
-                    <option value="minggu">Minggu</option>
+                    <option value="senin" ng-selected="data.attributes.day === 'senin'">Senin</option>
+                    <option value="selasa" ng-selected="data.attributes.day === 'selasa'">Selasa</option>
+                    <option value="rabu" ng-selected="data.attributes.day === 'rabu'">Rabu</option>
+                    <option value="kamis" ng-selected="data.attributes.day === 'kamis'">Kamis</option>
+                    <option value="jumat" ng-selected="data.attributes.day === 'jumat'">Jumat</option>
+                    <option value="sabtu" ng-selected="data.attributes.day === 'sabtu'">Sabtu</option>
+                    <option value="minggu" ng-selected="data.attributes.day === 'minggu'">Minggu</option>
             </select><br>
 
             <label class="form-label" for="date">Date</label><br>
-            <input class="form-control" type="date" id="date" name="date" ng-model="formData.date"><br>
+            <input class="form-control" type="text" id="date" name="date" ng-model="formData.date" value="data.attributes.date"><br>
 
             <label class="form-label" for="message">Message</label><br>
             <textarea class="form-control" name="message" rows="2" cols="100" ng-model="formData.message"></textarea><br>

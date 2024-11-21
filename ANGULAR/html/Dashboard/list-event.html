@@ -40,7 +40,7 @@
                     <td>{{ $index + 1 }}</td>
                     <td>{{ data.attributes.title }}</td>
                     <td>{{ data.attributes.day }}</td>
-                    <td>{{ data.attributes.date }}</td>
+                    <td>{{ data.attributes.date | date:'MMM d, yyyy' }}</td>
                     <td>{{ data.attributes.header }}</td>
                     <td>
                         <a href="update-event.html#"><button type="submit" class="btn btn-sm btn-info text-light" ng-click="getEventId(data.id)">Edit</button></a>

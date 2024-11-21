@@ -12,6 +12,10 @@ appControllers.controller('EventsController', ['$scope', '$http', '$window', fun
         $scope.datas = response.data.data;
     });
 
+    $http.get('http://127.0.0.1:8001/api/v1/events/' + localStorage.getItem('eventId')).then(function(response){
+        $scope.data = response.data.events;
+    });
+
     $scope.getEventId = function(eventId) {
         localStorage.setItem('eventId', eventId);
     };
@@ -29,7 +33,14 @@ appControllers.controller('EventsController', ['$scope', '$http', '$window', fun
             alert('Form submitted successfully!');  
             $window.location.href = "list-event.html";
         }, function errorCallback(response) {
-            alert('Error submitting form.');
+            let errorMessages = '';
+            angular.forEach(response.data.errors, function (messages, field) {
+                // `messages` is an array of error messages for a particular field
+                angular.forEach(messages, function (message) {
+                    errorMessages += message + '\n';
+                });
+            });
+            alert(errorMessages);
         });
     };
 
@@ -43,10 +54,17 @@ appControllers.controller('EventsController', ['$scope', '$http', '$window', fun
                     'X-CSRF-TOKEN': CSRF_TOKEN,
                 },
             }).then(function successCallback(response) {
-                alert('Form submitted successfully!');  
+                alert('Form update successfully!');  
                 $window.location.href = "list-event.html";
             }, function errorCallback(response) {
-                alert('Error submitting form.');
+                let errorMessages = '';
+                angular.forEach(response.data.errors, function (messages, field) {
+                    // `messages` is an array of error messages for a particular field
+                    angular.forEach(messages, function (message) {
+                        errorMessages += message + '\n';
+                    });
+                });
+                alert(errorMessages);
             });
     };
 
@@ -57,8 +75,15 @@ appControllers.controller('EventsController', ['$scope', '$http', '$window', fun
                     alert('Event deleted successfully');
                     $window.location.href = "list-event.html";
                 })
-                .catch(function(error) {
-                    alert('Failed to delete the event.');
+                .catch(function(response) {
+                    let errorMessages = '';
+                    angular.forEach(response.data.errors, function (messages, field) {
+                        // `messages` is an array of error messages for a particular field
+                        angular.forEach(messages, function (message) {
+                            errorMessages += message + '\n';
+                        });
+                    });
+                    alert(errorMessages);
                 });
         }
     };

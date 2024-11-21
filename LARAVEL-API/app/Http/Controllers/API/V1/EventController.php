@@ -24,7 +24,15 @@ class EventController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'title' => 'required|unique:events|max:255'
+            'title' => 'required|unique:events|max:255',
+            'day' => 'required',
+            'date' => 'required|date',
+            'message' => 'required',
+            'sub_message' => 'required',
+            'author_1' => 'required',
+            'job_author_1' => 'required',
+            'header' => 'required',
+            'body' => 'required'
         ]);
 
         $event = Event::create([
