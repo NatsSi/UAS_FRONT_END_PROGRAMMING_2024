@@ -13,9 +13,17 @@ class EventController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return new EventCollection(Event::all());
+        $query = $request->get('search', ''); // Get the search query
+        $perPage = $request->get('per_page');
+    
+        $events = Event::query()
+            ->where('title', 'LIKE', '%' . $query . '%') // Search by title
+            ->orWhere('place', 'LIKE', '%' . $query . '%') // Optional: search by place
+            ->orWhere('category', 'LIKE', '%' . $query . '%')->paginate($perPage);
+        
+        return new EventCollection($events);
     }
 
     /**

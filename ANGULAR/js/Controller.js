@@ -5,11 +5,46 @@ appControllers.controller('RecipesController', ['$scope', '$http', function ($sc
 }]);
 
 appControllers.controller('EventsController', ['$scope', '$http', '$window', function ($scope, $http, $window, CSRF_TOKEN) {
-    $scope.formData = {};
-    $scope.formDataCreate = {};
-    $scope.data = {};
-    $scope.eventId = localStorage.getItem('eventId');
+    $scope.formData = {}; //Untuk Read & Update
+    $scope.formDataCreate = {}; //Untuk Create
+    $scope.data = {}; //Untuk Read
+    $scope.eventId = localStorage.getItem('eventId'); //Untuk Read, Update & Delete
 
+    //Pagination
+    $scope.items = [];
+    $scope.currentPage = 1;
+    $scope.totalPages = 0;
+    $scope.itemsPerPage = 3;
+
+    //Search
+    $scope.searchQuery = ''; // Search query
+    console.log($scope.searchQuery);
+    // Fetch paginated data
+    $scope.fetchData = function (page) {
+        $http.get('http://127.0.0.1:8001/api/v1/events', {
+            params: {
+                search: $scope.searchQuery,
+                page: page,
+                per_page: $scope.itemsPerPage
+            }
+        }).then(function (response) {
+            $scope.items = response.data.data;
+            $scope.currentPage = response.data.meta.current_page;
+            $scope.totalPages = response.data.meta.last_page;
+
+            // Generate page numbers
+            $scope.pages = [];
+            for (let i = 1; i <= $scope.totalPages; i++) {
+                $scope.pages.push(i);
+            }
+        }, function (error) {
+            console.error("Error fetching data", error);
+        });
+    };
+
+    // Initialize
+    $scope.fetchData($scope.currentPage);
+    
     $http.get('http://127.0.0.1:8001/api/v1/events').then(function(response){
         $scope.datas = response.data.data;
     });

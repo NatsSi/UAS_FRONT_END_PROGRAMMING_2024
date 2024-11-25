@@ -36,17 +36,17 @@
             text-decoration: none;
         }
 
-        nav ul {
+        #nav ul {
             list-style: none;
             display: flex;
             gap: 20px;
         }
         
-        nav ul li {
+        #nav ul li {
             font-size: 18px;
         }
         
-        nav ul li a {
+        #nav ul li a {
             text-decoration: none;
             color: #333;
             position: relative;
@@ -55,12 +55,12 @@
             transition: color 0.3s ease, transform 0.3s ease;
         }
 
-        nav ul li a:hover {
+        #nav ul li a:hover {
             color: #3a5233;
             transform: scale(1.05);
         }
         
-        nav ul li a::before {
+        #nav ul li a::before {
             content: "";
             position: absolute;
             bottom: 0;
@@ -71,7 +71,7 @@
             transition: all 0.3s ease;
         }
         
-        nav ul li a:hover::before {
+        #nav ul li a:hover::before {
             width: 100%;
             left: 0;
         }
@@ -90,7 +90,7 @@
 
         @media (max-width: 768px) {
 
-        nav ul {
+        #nav ul {
             position: fixed;
             left: -100%;
             top: 3rem;
@@ -104,11 +104,11 @@
             padding-bottom: 40px;
         }
 
-        nav ul.active {
+        #nav ul.active {
             left: 0;
         }
 
-        nav li {
+        #nav li {
             margin: 0.05rem 0;
         }
 
@@ -141,7 +141,7 @@
             <h1>Yogo</h1>
         </a>
     </div>
-    <nav>
+    <nav id="navbar">
         <ul>
             <li><a href="list-recipe.html" class="nav-link">Recipes</a></li>
             <li><a href="list-event.html" class="nav-link">Events</a></li>
