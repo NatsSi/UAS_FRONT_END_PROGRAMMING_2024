@@ -86,6 +86,11 @@
       </div>
 
         <input type="text" id="search" ng-model="searchQuery" ng-keyup="fetchData()" placeholder="Search Events">
+        <label for="filterCategory" class="form-label">Filter by Category</label>
+        <select id="filterCategory" class="form-select mb-4" ng-model="selectedCategory" ng-change="fetchData()">
+            <option value="">All Categories</option>
+            <option ng-repeat="category in categories" value="{{ category }}">{{ category }}</option>
+        </select>
         <div class="appear3 d-flex justify-content-center" id="event-cards">
             <div ng-repeat="item in items" class="event-card">
                 <img src="../images/chermiti-mohamed-fk5RgUiYpVw-unsplash.jpg" alt="Tunis Image">

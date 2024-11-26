@@ -15,13 +15,30 @@ class EventController extends Controller
      */
     public function index(Request $request)
     {
-        $query = $request->get('search', ''); // Get the search query
+        $category = $request->get('category', '');
+        $search = $request->get('search', ''); // Get the search query
         $perPage = $request->get('per_page');
     
-        $events = Event::query()
-            ->where('title', 'LIKE', '%' . $query . '%') // Search by title
-            ->orWhere('place', 'LIKE', '%' . $query . '%') // Optional: search by place
-            ->orWhere('category', 'LIKE', '%' . $query . '%')->paginate($perPage);
+
+
+         // Query dasar
+        $query = Event::query();
+
+        // Tambahkan filter berdasarkan kategori (jika ada)
+        if (!empty($category)) {
+            $query->where('category', $category);
+        }
+
+        // Tambahkan search berdasarkan title, place, atau day (jika ada)
+        if (!empty($search)) {
+            $query->where(function ($q) use ($search) {
+                $q->where('title', 'LIKE', "%{$search}%")
+                ->orWhere('place', 'LIKE', "%{$search}%");
+            });
+        }
+
+        // Pagination dan kembalikan hasil
+        $events = $query->paginate($perPage);
         
         return new EventCollection($events);
     }

@@ -9,12 +9,17 @@ appControllers.controller('EventsController', ['$scope', '$http', '$window', fun
     $scope.formDataCreate = {}; //Untuk Create
     $scope.data = {}; //Untuk Read
     $scope.eventId = localStorage.getItem('eventId'); //Untuk Read, Update & Delete
+    $scope.items = []; //Untuk menyimpan response
 
     //Pagination
-    $scope.items = [];
     $scope.currentPage = 1;
     $scope.totalPages = 0;
     $scope.itemsPerPage = 3;
+
+    //Filter
+    $scope.categories = ['Health','Travel','Environment']; // List kategori
+    $scope.selectedCategory = ""; // Kategori terpilih
+
 
     //Search
     $scope.searchQuery = ''; // Search query
@@ -23,6 +28,7 @@ appControllers.controller('EventsController', ['$scope', '$http', '$window', fun
     $scope.fetchData = function (page) {
         $http.get('http://127.0.0.1:8001/api/v1/events', {
             params: {
+                category: $scope.selectedCategory,
                 search: $scope.searchQuery,
                 page: page,
                 per_page: $scope.itemsPerPage
