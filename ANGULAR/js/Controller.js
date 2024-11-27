@@ -23,11 +23,30 @@ appControllers.controller('EventsController', ['$scope', '$http', '$window', fun
 
     //Search
     $scope.searchQuery = ''; // Search query
-    console.log($scope.searchQuery);
+    $scope.date = null;
+
+    //Sort
+    $scope.sort = '';
+
+    $scope.isNearestDisabled = true; // Status awal Nearest
+    $scope.isFarthestDisabled = false; // Status awal Farthest
+
+    $scope.toggleDisable = function(button) {
+    if (button === 'nearest') {
+        $scope.isNearestDisabled = true;  // Nonaktifkan tombol Nearest
+        $scope.isFarthestDisabled = false; // Pastikan tombol Farthest tetap aktif
+    } else if (button === 'farthest') {
+        $scope.isFarthestDisabled = true;  // Nonaktifkan tombol Farthest
+        $scope.isNearestDisabled = false; // Pastikan tombol Nearest tetap aktif
+    }
+    };
+
     // Fetch paginated data
     $scope.fetchData = function (page) {
         $http.get('http://127.0.0.1:8001/api/v1/events', {
             params: {
+                sort: $scope.sort,
+                date: $scope.date,
                 category: $scope.selectedCategory,
                 search: $scope.searchQuery,
                 page: page,

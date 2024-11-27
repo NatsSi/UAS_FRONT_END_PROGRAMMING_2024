@@ -15,14 +15,22 @@ class EventController extends Controller
      */
     public function index(Request $request)
     {
+        $sort = $request->get('sort', 'asc');
+        $date = $request->get('date', '');
         $category = $request->get('category', '');
         $search = $request->get('search', ''); // Get the search query
         $perPage = $request->get('per_page');
     
-
-
-         // Query dasar
+        // Query dasar
         $query = Event::query();
+
+        if(!empty($sort)) {
+            $query->orderBy('date', $sort);
+        }
+
+        if(!empty($date)) {
+            $query->where('date', '>=', $date);
+        }
 
         // Tambahkan filter berdasarkan kategori (jika ada)
         if (!empty($category)) {

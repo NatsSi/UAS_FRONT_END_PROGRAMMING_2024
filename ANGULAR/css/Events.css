@@ -104,7 +104,7 @@
     overflow: hidden;
   }
 
-  .card {
+  .card-course {
     display: none;
       flex: 1;
       padding: 20px;
@@ -338,7 +338,7 @@
       margin-bottom: 20px;
   }
 
-  .btn {
+  .btn-participate {
       padding: 12px 20px;
       border: 2px solid #425126;
       background-color: transparent;
@@ -352,15 +352,9 @@
       transition: 0.3s;
   }
 
-  .btn:hover {
+  .btn-participate:hover {
       background-color: #425126;
       color: white;
-  }
-
-  .btn img {
-      width: 18px;
-      height: 18px;
-      margin-left: 10px;
   }
   
   /* Animation fade in */
@@ -467,7 +461,7 @@
       padding-left: 0px;
     }
 
-    .card {
+    .card-course {
       flex-direction: column;
     }
 

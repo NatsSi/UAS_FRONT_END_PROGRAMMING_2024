@@ -33,6 +33,7 @@ class EventResource extends JsonResource
                 'image' => $this->image,
                 'header' => $this->header,
                 'body' => $this->body,
+                'created_at' => $this->created_at,
             ],
             ];
     }

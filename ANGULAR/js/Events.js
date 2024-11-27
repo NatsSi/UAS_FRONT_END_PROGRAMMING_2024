@@ -89,7 +89,7 @@ const io5 = new IntersectionObserver(active5);
  }
 
 let currentSlide = 0;
-const slides = document.querySelectorAll('.card');
+const slides = document.querySelectorAll('.card-course');
 const dots = document.querySelectorAll('.dot');
 
 function showSlide(index) {
