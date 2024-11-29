@@ -6,6 +6,33 @@
   text-decoration: none;
   scroll-behavior: smooth;
 }
+
+  /*Custom Color Bootstrap*/
+  input[type="date"]:focus, select:valid:focus{
+    box-shadow: 0 0 0 0.07rem #445C3C; /* Hijau */
+    border-color: white;
+    outline-color: none;
+  }
+
+
+  .page-item.active .page-link{
+    background-color: #7a8a56;
+    border-color: #7a8a56;
+  }
+
+  .page-item:hover .page-link{
+    background-color: #7a8a56;
+    border-color: #7a8a56;
+    color: white;
+  }
+
+  .pagination .page-item .page-link:focus {
+    box-shadow: 0 0 0 0.05rem #3c4a28; /* Hijau */
+  }
+
+  .page-item .page-link{
+    color: #425126;
+  }
   
   body {
     background-color: #fff;

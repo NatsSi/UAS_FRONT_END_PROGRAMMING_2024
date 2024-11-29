@@ -7,10 +7,6 @@ yogo.config(function ($routeProvider, $locationProvider) {
         templateUrl: "events.html",
         controller: "EventsController"
     })
-    .when("/ANGULAR/html/events.html", {
-        templateUrl: "events.html",
-        controller: "EventsController"
-    })
     .when("/ANGULAR/html/Dashboard/list-event.html", {
         templateUrl: "list-event.html",
         controller: "EventsController"

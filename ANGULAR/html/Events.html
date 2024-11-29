@@ -85,15 +85,18 @@
             <p>We offer a holistic program that allows you to live incredible experiences and builds you up for a better life, merging the benefits of yoga for a deep transformation of body, mind, and soul.</p>
         </div>
 
+         <!-- Search Field -->
         <input type="text" id="search" ng-model="searchQuery" ng-keyup="fetchData()" placeholder="Search Events">
 
         <div class="container mb-2">
         <div class="row align-items-center">
             <div class="col-md-4 mb-2">
+                <!-- Search Date Field -->
                 <label for="searchDate" class="form-label">Date</label>
                 <input id="searchDate" type="date" ng-model="date" class="form-control" ng-change="fetchData()">
             </div>
             <div class="col-md-4 mb-2">
+                <!-- Filter Field -->
                 <label for="filterCategory" class="form-label">Filter</label>
                 <select id="filterCategory" class="form-select" ng-model="selectedCategory" ng-change="fetchData()">
                     <option value="">All Categories</option>
@@ -101,6 +104,7 @@
                 </select>
             </div>
             <div class="col-md-4 mb-2" style="max-height: 70px;">
+                <!-- Sort Field -->
                 <label for="sort" class="form-label">Sort</label>
                 <nav id="sort" aria-label="Page navigation">
                     <ul class="pagination d-flex text-center">
@@ -128,14 +132,15 @@
                 </div>
             </div>
         </div>
-        <nav aria-label="Page navigation example" class="d-flex justify-content-center mt-3">
+        <!-- Pagination Field -->
+        <nav aria-label="Page navigation" class="d-flex justify-content-center mt-3" id="pagination">
             <ul class="pagination">
                 <li class="page-item" ng-click="fetchData(1)" ng-if="currentPage > 1"><a href="" class="page-link">First</a></li>
-                <li class="page-item" ng-click="fetchData(currentPage - 1)" ng-if="currentPage > 1"><a href="" class="page-link">Previous</a></li>
+                <li class="page-item" ng-click="fetchData(currentPage - 1)" ng-if="currentPage > 1"><a href="" class="page-link">&laquo;</a></li>
                 <li class="page-item" ng-repeat="page in pages track by $index" ng-class="{active: page === currentPage}">
                     <a href="" class="page-link" ng-click="fetchData(page)">{{ page }}</a>
                 </li>
-                <li class="page-item" ng-click="fetchData(currentPage + 1)" ng-if="currentPage < totalPages"><a href="" class="page-link">Next</a></li>
+                <li class="page-item" ng-click="fetchData(currentPage + 1)" ng-if="currentPage < totalPages"><a href="" class="page-link">&raquo;</a></li>
                 <li class="page-item" ng-click="fetchData(totalPages)" ng-if="currentPage < totalPages"><a href="" class="page-link">Last</a></li>
             </ul>
         </nav>
