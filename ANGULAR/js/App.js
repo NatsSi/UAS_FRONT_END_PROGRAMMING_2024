@@ -1,25 +1,66 @@
 var yogo = angular.module('yogo', ['ngRoute', 'appControllers', 'ngSanitize']);
 
+yogo.directive('head', ['$rootScope','$compile',
+    function($rootScope, $compile){
+        return {
+            restrict: 'E',
+            link: function(scope, elem){
+                var html = '<link rel="stylesheet" ng-repeat="(routeCtrl, cssUrl) in routeStyles" ng-href="{{cssUrl}}" />';
+                elem.append($compile(html)(scope));
+                scope.routeStyles = {};
+                $rootScope.$on('$routeChangeStart', function (e, next, current) {
+                    if(current && current.$$route && current.$$route.css){
+                        if(!angular.isArray(current.$$route.css)){
+                            current.$$route.css = [current.$$route.css];
+                        }
+                        angular.forEach(current.$$route.css, function(sheet){
+                            delete scope.routeStyles[sheet];
+                        });
+                    }
+                    if(next && next.$$route && next.$$route.css){
+                        if(!angular.isArray(next.$$route.css)){
+                            next.$$route.css = [next.$$route.css];
+                        }
+                        angular.forEach(next.$$route.css, function(sheet){
+                            scope.routeStyles[sheet] = sheet;
+                        });
+                    }
+                });
+            }
+        };
+    }
+]);
+
+
 yogo.config(function ($routeProvider, $locationProvider) {
     $locationProvider.hashPrefix('');
     $routeProvider
-    .when("/ANGULAR/html/events.html", {
-        templateUrl: "events.html",
-        controller: "EventsController"
+    .when('/', {
+        templateUrl: 'Home.html', // Home page
     })
-    .when("/ANGULAR/html/Dashboard/list-event.html", {
-        templateUrl: "list-event.html",
-        controller: "EventsController"
+    .when('/events', {
+        templateUrl: 'Events.html', // Events page
+        controller: 'EventsController',
+        css: '../css/Events.css'
     })
-    .when("/ANGULAR/html/Dashboard/create-event.html", {
-        templateUrl: "create-event.html",
-        controller: "EventsController"
+    .when('/events/detail', {
+        templateUrl: 'Events_Detail.html', // Event Detail page
+        controller: 'EventsController',
+        css: '../css/Events_Detail.css'
     })
-    .when("/ANGULAR/html/Dashboard/update-event.html", {
-        templateUrl: "update-event.html",
-        controller: "EventsController"
+    .when('/list-event', {
+        templateUrl: 'list-event.html', // List Event page
+        controller: 'EventsController',
+    })
+    .when('/create-event', {
+        templateUrl: 'create-event.html', // Create Event page
+        controller: 'EventsController',
+    })
+    .when('/update-event', {
+        templateUrl: 'update-event.html', // Update Event page
+        controller: 'EventsController',
     })
     .otherwise({
-        redirectTo: "/"
+        redirectTo: '/'
     });
 });

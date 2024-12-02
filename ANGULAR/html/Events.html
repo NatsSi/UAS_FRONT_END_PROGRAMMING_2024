@@ -1,20 +1,3 @@
-<!DOCTYPE html>
-<html lang="en" ng-app="yogo">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events</title>
-    <link rel="stylesheet" href="../css/Events.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-    <script src="../js/angular.min.js"></script>
-    <script src="../js/angular-route.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-sanitize.min.js"></script>
-    <script src="../js/Controller.js"></script>
-    <script src="../js/App.js"></script>
-</head>
-<body ng-controller="EventsController">
-    <div id="navbar"></div>
       <div id="container-one">
         <div id="text-content" class="appear">
             <h1>For a better connection</h1>
@@ -126,7 +109,7 @@
                     <div class="event-category">{{ item.attributes.category  }}</div>
                     <div class="event-title">{{ item.attributes.title  }}</div>
                     <div class="event-description">{{ item.attributes.sub_message  }}</div>
-                    <a href="Events_1.html#" class="btn-participate" ng-click="getEventId(item.id)">
+                    <a href="#/events/detail" class="btn-participate" ng-click="getEventId(item.id)">
                         Participate
                     </a>
                 </div>
@@ -146,10 +129,5 @@
         </nav>
     </div>
 
-    <div id="footer"></div>
 
-    <script src="../js/Events.js"></script>
-    <script src="../js/Navbar.js?v=1" defer></script>
-    
-</body>
-</html>
+   
