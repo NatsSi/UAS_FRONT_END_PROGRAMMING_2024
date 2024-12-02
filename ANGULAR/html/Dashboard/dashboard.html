@@ -11,19 +11,22 @@
     <script src="../../js/angular-route.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-sanitize.min.js"></script>
     <script src="../../js/App.js"></script>
-    <script src="../../js/Controller.js"></script>
+    <script src="../../js/controllers/NavBarController.js"></script>
+    <script src="../../js/controllers/HomeController.js"></script>
+    <script src="../../js/controllers/EventsController.js"></script>
+    <script src="../../js/services/EventsService.js"></script>
     
 </head>
 <body>
 
 <div id="nav">
     <div id="logo">
-        <a href="../Home.html">
+        <a href="../Index.html" class="nav-link" ng-class="{'active-nav': isActive('/')}">
             <h1>Yogo</h1>
         </a>
     </div>
     <nav id="navbar">
-        <ul ng-controller="EventsController">
+        <ul ng-controller="NavBarController">
             <li><a href="list-recipe.html" class="nav-link">Recipes</a></li>
             <li><a href="#/list-event" class="nav-link" ng-class="{'active-nav': isActive('/list-event')}">Events</a></li>
             <li><a href="list-blog.html" class="nav-link">Blog</a></li>

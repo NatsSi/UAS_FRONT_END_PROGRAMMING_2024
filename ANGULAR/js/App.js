@@ -1,4 +1,11 @@
-var yogo = angular.module('yogo', ['ngRoute', 'appControllers', 'ngSanitize']);
+var yogo = angular.module('yogo', [
+    'ngRoute', 
+    'ngSanitize',
+    'NavBarController', 
+    'HomeController', 
+    'EventsController',
+    'EventsService'
+    ]);
 
 yogo.directive('head', ['$rootScope','$compile',
     function($rootScope, $compile){
@@ -37,6 +44,8 @@ yogo.config(function ($routeProvider, $locationProvider) {
     $routeProvider
     .when('/', {
         templateUrl: 'Home.html', // Home page
+        controller: 'HomeController',
+        css: '../css/Home.css'
     })
     .when('/events', {
         templateUrl: 'Events.html', // Events page
