@@ -4,7 +4,12 @@ var yogo = angular.module('yogo', [
     'NavBarController', 
     'HomeController', 
     'EventsController',
-    'EventsService'
+    'RegisterController',
+    'RegisterStep1Controller',
+    'RegisterStep2Controller',
+    'RegisterStep3Controller',
+    'EventsService',
+    'MembersService'
     ]);
 
 yogo.directive('head', ['$rootScope','$compile',
@@ -68,6 +73,27 @@ yogo.config(function ($routeProvider, $locationProvider) {
     .when('/update-event', {
         templateUrl: 'update-event.html', // Update Event page
         controller: 'EventsController',
+    })
+    .when('/register', {
+        templateUrl: 'Register.html', // REGISTER
+        controller: 'RegisterController',
+        css: '../css/Register.css',
+        layout: 'no-footer'
+    })
+    .when('/register-step-1', {
+        templateUrl: 'Register_Step_1.html', // REGISTER
+        controller: 'RegisterStep1Controller',
+        css: '../css/Register_Step_1.css'
+    })
+    .when('/register-step-2', {
+        templateUrl: 'Register_Step_2.html', // REGISTER
+        controller: 'RegisterStep2Controller',
+        css: '../css/Register_Step_2.css'
+    })
+    .when('/register-step-3', {
+        templateUrl: 'Register_Step_3.html', // REGISTER
+        controller: 'RegisterStep3Controller',
+        css: '../css/Register_Step_3.css'
     })
     .otherwise({
         redirectTo: '/'

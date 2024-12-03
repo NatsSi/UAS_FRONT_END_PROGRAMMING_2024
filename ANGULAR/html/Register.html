@@ -1,26 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yoogy - Register</title>
-  <link rel="stylesheet" href="../css/Register.css">
-</head>
-<body>
-
-    <div id="navbar"></div>
-
-  <section class="main-content">
-    <h1>Yoga classes, meditation sessions, and more</h1>
-    <p>Starts at USD $10/month. Cancel anytime.</p>
-    <p>Ready to learn? Enter your email to create or restart your membership.</p>
-    <form class="email-form" action="Register_Step_1.html" method="GET">
-      <input type="email" name="email" placeholder="Email address" required>
+<section class="main-content">
+  <h1>Yoga classes, meditation sessions, and more</h1>
+  <p>Starts at USD $10/month. Cancel anytime.</p>
+  <p>Ready to learn? Enter your email to create or restart your membership.</p>
+  <form class="email-form" ng-submit="redirectToRegister(email)" novalidate>
+      <input type="email" name="email" ng-model="email" placeholder="Email address" required>
       <button type="submit" class="get-started-btn">Get Started</button>
-    </form>
-    
-    <p id="warning" class="warning"></p>
-  </section>
+  </form>
+  <p id="warning" class="warning"></p>
+</section>
+
 
   <div class="line line-1">
     <div class="wave wave1" style="background-image: url(../images/wave/1.png)"></div>
@@ -34,7 +22,5 @@
     <div class="wave wave3" style="background-image: url(../images/wave/3.png)"></div>
   </div>
 
-  <script src="../js/Navbar.js?v=1" defer></script>
-  <script src="../js/Register.js"></script>
-</body>
-</html>
+
+

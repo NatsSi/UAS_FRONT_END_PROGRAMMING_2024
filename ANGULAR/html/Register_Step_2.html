@@ -1,84 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pricing Section Design</title>
-    <link rel="stylesheet" href="../css/Register_Step_2.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
-</head>
-<body>
+<div id="content"></div>
+<div id="step-indicator">STEP 2 OF 3</div>
+<h1>Choose the plan that's right for you</h1>
 
-    <div id="navbar"></div>
-    <div id="content"></div>
-    <div id="step-indicator">STEP 2 OF 3</div>
-    <h1>Choose the plan that's right for you</h1>
-    <div class="wrapper">
-        <div class="card">
-            <h3>Zen Starter</h3>
-            <h1>$10 <span>/Month</span></h1>
-            <p>Designed for beginners, offering curated yoga classes.</p>
-            <ul>
-                <li><i class="fa-solid fa-square-check"></i> 5 Yoga Classes monthly</li>
-                <li><i class="fa-solid fa-square-check"></i> Online Community</li>
-                <li><i class="fa-solid fa-square-check"></i> Meditation Sessions</li>
-            </ul>
-            <a href="#" class="subscribe-btn">Subscribe</a>
-
-        </div>
-
-        <div class="card">
-            <h3>Energy Booster</h3>
-            <h1>$18 <span>/Month</span></h1>
-            <p>Focuses on dynamic programs for increased energy.</p>
-            <ul>
-                <li><i class="fa-solid fa-square-check"></i> 10 Yoga Classes monthly</li>
-                <li><i class="fa-solid fa-square-check"></i> Monthly Workshops</li>
-                <li><i class="fa-solid fa-square-check"></i> Priority Access to Events</li>
-            </ul>
-            <a href="#" class="subscribe-btn">Subscribe</a>
-
-        </div>
-
-
-        <div class="card">
-            <h3>Mindful Pro (Popular)</h3>
-            <h1>$24 <span>/Month</span></h1>
-            <p>Unlimited access to all yoga classes and workshops.</p>
-            <ul>
-                <li><i class="fa-solid fa-square-check"></i>Personal Coaching Sessions</li>
-                <li><i class="fa-solid fa-square-check"></i>Discounted Yoga Events</li>
-                <li><i class="fa-solid fa-square-check"></i>Access to All Basic Features</li>
-            </ul>
-            <a href="#" class="subscribe-btn">Subscribe</a>
-
-        </div>
-
-
-        <div class="card">
-            <h3>Ultimate Zen</h3>
-            <h1>$32 <span>/Month</span></h1>
-            <p>A premium yoga experience with exclusive benefits.</p>
-            <ul>
-                <li><i class="fa-solid fa-square-check"></i>Private Yoga Sessions</li>
-                <li><i class="fa-solid fa-square-check"></i>Unlimited Access to Classes</li>
-                <li><i class="fa-solid fa-square-check"></i>Chat Support</li>
-            </ul>
-            <a href="#" class="subscribe-btn">Subscribe</a>
-
-        </div>
+<div class="wrapper">
+    <div class="card" ng-repeat="card in cards" 
+         ng-class="{'active': card.active}" 
+         ng-click="selectCard(card)">
+        <h3>{{ card.name }}</h3>
+        <h1>{{ card.price }} <span>/Month</span></h1>
+        <p>{{ card.description }}</p>
+        <ul>
+            <li ng-repeat="feature in card.features">
+                <i class="fa-solid fa-square-check"></i> {{ feature }}
+            </li>
+        </ul>
+        <a href="#" class="subscribe-btn" ng-click="selectCard(card); $event.preventDefault()">Subscribe</a>
     </div>
+</div>
 
-    <div id="submit-container">
-        <button id="submit-btn">Continue to Next Step</button>
-    </div>
-    
-    <div id="footer"></div>
-
-    <script src="../js/Blog.js"></script>
-    <script src="../js/Navbar.js?v=1" defer></script>
-    <script src="../js/Register_Step_2.js"></script>
-    
-</body>
-</html>
+<div id="submit-container">
+    <button id="submit-btn" ng-click="submitForm()">Continue to Next Step</button>
+</div>

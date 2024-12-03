@@ -1,37 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Membership - Step 1</title>
-    <link rel="stylesheet" href="../css/Register_Step_1.css">
-</head>
-<body>
-    
-    <div id="navbar"></div>
-    <div class="container">
-        <div class="step-indicator">STEP 1 OF 3</div>
-        <h1>Create a password to start your membership</h1>
-        <p>Only a few more steps left, and you’ll be all set! We also prefer to avoid paperwork.</p>
+<div id="navbar"></div>
+<div class="container">
+    <div class="step-indicator">STEP 1 OF 3</div>
+    <h1>Create a password to start your membership</h1>
+    <p>Only a few more steps left, and you’ll be all set! We also prefer to avoid paperwork.</p>
 
-        <form class="membership-form" action="../html/Register_Step_2.html">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" disabled>
+    <form class="membership-form" ng-submit="submitForm()" novalidate>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" ng-model="formData.email" disabled>
 
-            <label for="password">Add a password</label>
-            <input type="password" id="password" name="password" placeholder="Add a password" required>
+        <label for="password">Add a password</label>
+        <input type="password" id="password" name="password" ng-model="formData.password" placeholder="Add a password" required>
 
-            <div class="checkbox-group">
-                <input type="checkbox" id="offers" name="offers">
-                <label for="offers">Please do not email me special offers.</label>
-            </div>
-            <button type="submit" class="submit-btn">Next</button>
-        </form>
-    </div>
+        <div class="checkbox-group">
+            <input type="checkbox" id="offers" name="offers">
+            <label for="offers">Please do not email me special offers.</label>
+        </div>
+        <button type="submit" class="submit-btn">Next</button>
+    </form>
 
-    <script src="../js/Navbar.js?v=1" defer></script>
-    <script src="../js/Register_Step_1.js"></script>
-
-
-</body>
-</html>
+    <p class="error-message" ng-if="errorMessage">{{errorMessage}}</p>
+</div>
