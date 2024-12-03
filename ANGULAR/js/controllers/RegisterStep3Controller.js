@@ -29,7 +29,7 @@ angular.module('RegisterStep3Controller', ['MembersService'])
                 subscription_type: $scope.subscription_type.trim(),
                 payment_method: $scope.payment_method.trim(),
                 password: $scope.password.trim(),
-                subscription_date: new Date().toISOString().split('T')[0] // Today's date in `YYYY-MM-DD`
+                subscription_date: new Date().toISOString().split('T')[0] 
             };
         
             console.log('Sending user data:', userData);
@@ -39,8 +39,8 @@ angular.module('RegisterStep3Controller', ['MembersService'])
                     console.log('Registration successful:', response);
                     alert('Registration successful!');
         
-                    // Redirecting to the home page (or any other route you wish)
-                    $window.location.href = '#/'; // This will navigate to the root route
+                    
+                    $window.location.href = '#/';
                 })
                 .catch(error => {
                     console.error('Error during registration:', error);
