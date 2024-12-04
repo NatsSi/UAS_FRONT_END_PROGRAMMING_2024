@@ -3,6 +3,7 @@
     text-decoration: none;
     scroll-behavior: smooth;
 }
+
 #nav {
     position: relative;
     display: flex;

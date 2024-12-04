@@ -28,7 +28,7 @@
                     <td>{{ data.attributes.day }}</td>
                     <td>{{ data.attributes.date | date:'MMM d, yyyy' }}</td>
                     <td>
-                        <a href="#/update-event"><button type="submit" class="btn btn-sm btn-primary text-light" ng-click="getEventId(data.id)">Edit</button></a>
+                        <a href="#/update-event/{{data.id}}"><button type="submit" class="btn btn-sm btn-primary text-light">Edit</button></a>
                         <button type="submit" class="btn btn-sm btn-danger" ng-click="deleteEvent(data.id)">Delete</button>
                     </td>
                 </tr>          

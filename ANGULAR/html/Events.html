@@ -109,7 +109,7 @@
                     <div class="event-category">{{ item.attributes.category  }}</div>
                     <div class="event-title">{{ item.attributes.title  }}</div>
                     <div class="event-description">{{ item.attributes.sub_message  }}</div>
-                    <a href="#/events/detail" class="btn-participate" ng-click="getEventId(item.id)">
+                    <a href="#/events/detail/{{item.id}}" class="btn-participate">
                         Participate
                     </a>
                 </div>

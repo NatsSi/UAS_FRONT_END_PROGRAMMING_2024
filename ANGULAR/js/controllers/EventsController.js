@@ -1,10 +1,12 @@
 angular.module('EventsController', ['EventsService'])
     .constant("CSRF_TOKEN", '{{ csrf_token() }}')
-    .controller('EventsController', ['$scope', '$http', '$window', '$route', 'EventsService', function ($scope, $http, $window, $route, EventsService) {
+    .controller('EventsController', ['$scope', '$http', '$window', '$route', '$routeParams', 'EventsService', function ($scope, $http, $window, $route, $routeParams, EventsService) {
         $scope.formData = {}; //Untuk Read & Update
         $scope.formDataCreate = {}; //Untuk Create
         $scope.data = {}; //Untuk Read
-        $scope.eventId = localStorage.getItem('eventId'); //Untuk Read, Update & Delete
+        $scope.Data = false; //Untuk apakah data sudah ada atau belum
+        $scope.eventId = $routeParams.id; //Untuk Read, Update & Delete
+        //$scope.eventId = localStorage.getItem('eventId'); 
         $scope.items = []; //Untuk menyimpan response
 
         //Pagination
@@ -189,15 +191,11 @@ angular.module('EventsController', ['EventsService'])
         // Initialize
         $scope.fetchData($scope.currentPage);
 
-        $scope.getEventId = function(eventId) {
-            localStorage.setItem('eventId', eventId);
-        };
-
         $http.get('http://127.0.0.1:8001/api/v1/events').then(function(response){
             $scope.datas = response.data.data;
         });
     
-        $http.get('http://127.0.0.1:8001/api/v1/events/' + localStorage.getItem('eventId')).then(function(response){
+        $http.get('http://127.0.0.1:8001/api/v1/events/' + $scope.eventId).then(function(response){
             $scope.data = response.data.events;
             $scope.formData = {
                 title : $scope.data.attributes.title ,
@@ -215,6 +213,7 @@ angular.module('EventsController', ['EventsService'])
                 header  : $scope.data.attributes.header,
                 body : $scope.data.attributes.body 
             };
+            $scope.Data = true;
         });
 
         // Create event

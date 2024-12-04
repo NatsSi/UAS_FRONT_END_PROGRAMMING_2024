@@ -4,7 +4,7 @@ angular.module('EventsService', [])
 
         return {
             createEvent: function(data) {
-                return $http.post(`${baseUrl}/create-event`, data, {
+                return $http.post(`${baseUrl}/events`, data, {
                     headers: {
                         'Content-Type': 'application/json',
                         'X-CSRF-TOKEN': CSRF_TOKEN,

@@ -46,6 +46,13 @@ yogo.directive('head', ['$rootScope','$compile',
     }
 ]);
 
+yogo.run(function($rootScope, $route) {
+    $rootScope.$on('$routeChangeSuccess', function() {
+        if ($route.current && $route.current.title) {
+            document.title = $route.current.title;
+        }
+    });
+});
 
 yogo.config(function ($routeProvider, $locationProvider) {
     $locationProvider.hashPrefix('');
@@ -53,6 +60,7 @@ yogo.config(function ($routeProvider, $locationProvider) {
     .when('/', {
         templateUrl: 'Home.html', // Home page
         controller: 'HomeController',
+        title: 'Home',
         css: '../css/Home.css'
     })
     .when('/home_2', {
@@ -63,24 +71,29 @@ yogo.config(function ($routeProvider, $locationProvider) {
     .when('/events', {
         templateUrl: 'Events.html', // Events page
         controller: 'EventsController',
+        title: 'Events',
         css: '../css/Events.css'
     })
-    .when('/events/detail', {
+    .when('/events/detail/:id', {
         templateUrl: 'Events_Detail.html', // Event Detail page
         controller: 'EventsController',
+        title: 'Events Detail',
         css: '../css/Events_Detail.css'
     })
     .when('/list-event', {
         templateUrl: 'list-event.html', // List Event page
         controller: 'EventsController',
+        title: 'List Event',
     })
     .when('/create-event', {
         templateUrl: 'create-event.html', // Create Event page
         controller: 'EventsController',
+        title: 'Create Event',
     })
-    .when('/update-event', {
+    .when('/update-event/:id', {
         templateUrl: 'update-event.html', // Update Event page
         controller: 'EventsController',
+        title: 'Update Event',
     })
     .when('/register', {
         templateUrl: 'Register.html', // REGISTER
