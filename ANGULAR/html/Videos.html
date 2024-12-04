@@ -1,0 +1,63 @@
+<!-- Section Search Bar -->
+<section class="search-bar container my-5">
+    <div class="row">
+        <!-- Search Input -->
+        <div class="col-md-4 mb-3">
+            <input type="text" ng-model="searchQuery" ng-change="searchVideos()"
+                placeholder="Search by title or publisher..." class="form-control search-input">
+        </div>
+
+        <!-- Dropdown Filter Type Video -->
+        <div class="col-md-3 mb-3">
+            <select ng-model="selectedType" ng-change="searchVideos()" class="form-control filter-dropdown">
+                <option value="">All Types</option>
+                <option value="Tutorial">Tutorial</option>
+                <option value="Healthy F&B">Healthy F&B</option>
+                <option value="Tips">Tips</option>
+            </select>
+        </div>
+
+        <!-- Dropdown Sort by Date -->
+        <div class="col-md-3 mb-3">
+            <select ng-model="sortOrder" ng-change="searchVideos()" class="form-control sort-dropdown">
+                <option value="asc">Sort from latest upload</option>
+                <option value="desc">Sort from oldest upload</option>
+            </select>
+        </div>
+    </div>
+</section>
+
+<!-- Section Video List -->
+<div class="videos-list container mb-5">
+    <div class="row">
+        <div class="col-md-4 mb-4" ng-repeat="video in currentPageVideos">
+            <div class="card video-card">
+                <!-- Container for Title and Publisher -->
+                <div class="video-title-container">
+                    <h5 class="card-title">{{video.title}}</h5>
+                    <p class="card-subtitle"><strong>Publisher:</strong> {{video.publisher}}</p>
+                </div>
+
+                <!-- Container for Link, Type, and Upload Date -->
+                <div class="video-details-container">
+                    <p><strong>Link:</strong> <a ng-href="{{video.link}}" target="_blank" class="text-primary">Watch
+                            Video</a></p>
+                    <p><strong>Type:</strong> {{video.type}}</p>
+                    <p><strong>Uploaded on:</strong> {{video.upload_date | date:'medium'}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pagination Controls -->
+    <div class="pagination-container d-flex justify-content-between">
+        <!-- Previous Button -->
+        <button ng-click="previousPage()" class="btn btn-secondary" ng-disabled="currentPage === 1">Previous</button>
+
+        <!-- Page Number -->
+        <span>Page {{currentPage}} of {{totalPages}}</span>
+
+        <!-- Next Button -->
+        <button ng-click="nextPage()" class="btn btn-secondary" ng-disabled="currentPage === totalPages">Next</button>
+    </div>
+</div>

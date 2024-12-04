@@ -1,0 +1,38 @@
+<div class="container">
+    <h2>Update Video</h2>
+    <form name="updateVideoForm" ng-submit="updateVideo()">
+        <!-- Video Title -->
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" id="title" class="form-control" ng-model="formDataUpdated.title"/>
+        </div>
+
+        <!-- Video Publisher -->
+        <div class="form-group">
+            <label for="publisher">Publisher:</label>
+            <input type="text" id="publisher" class="form-control" ng-model="formDataUpdated.publisher"/>
+        </div>
+
+        <!-- Video Link -->
+        <div class="form-group">
+            <label for="link">Link:</label>
+            <input type="url" id="link" class="form-control" ng-model="formDataUpdated.link"/>
+        </div>
+
+        <!-- Video Type -->
+        <div class="mb-3">
+            <label for="type" class="form-label">Jenis Video</label>
+            <select class="form-select" id="type" name="type" ng-model="formDataUpdated.type">
+                <option value="" disabled>Pilih jenis video</option>
+                <option value="Tutorial">Tutorial</option>
+                <option value="Healthy F&B">Healthy F&B</option>
+                <option value="Tips">Tips</option>
+            </select>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group">
+            <button type="submit" value="Update" class="btn btn-primary">Update Video</button>
+        </div>
+    </form>
+</div>

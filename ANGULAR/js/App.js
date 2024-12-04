@@ -9,7 +9,10 @@ var yogo = angular.module('yogo', [
     'RegisterStep2Controller',
     'RegisterStep3Controller',
     'EventsService',
-    'MembersService'
+    'MembersService',
+    'HomeController_2',
+    'VideoController',
+    'VideoService'
     ]);
 
 yogo.directive('head', ['$rootScope','$compile',
@@ -51,6 +54,11 @@ yogo.config(function ($routeProvider, $locationProvider) {
         templateUrl: 'Home.html', // Home page
         controller: 'HomeController',
         css: '../css/Home.css'
+    })
+    .when('/home_2', {
+        templateUrl: 'Home_2.html', // Home page
+        controller: 'HomeController_2',
+        css: '../css/Home_2.css'
     })
     .when('/events', {
         templateUrl: 'Events.html', // Events page
@@ -95,6 +103,25 @@ yogo.config(function ($routeProvider, $locationProvider) {
         controller: 'RegisterStep3Controller',
         css: '../css/Register_Step_3.css'
     })
+    .when('/videos', {
+        templateUrl: 'Videos.html', // Videos
+        controller: 'VideoController',
+        css: '../css/Videos.css'
+    })
+    .when('/list-video', {
+        templateUrl: 'Dashboard/list-video.html', // List Event page
+        controller: 'VideoController',
+        css: '../css/List_Video.css'
+    })
+    .when('/create-video', {
+        templateUrl: 'Dashboard/create-video.html', // Create Event page
+        controller: 'VideoController',
+        css: '../css/Upload_Video.css'
+    })
+    .when('/update-video', {
+        templateUrl: 'Dashboard/update-video.html', // Update Event page
+        controller: 'VideoController',
+    }) 
     .otherwise({
         redirectTo: '/'
     });

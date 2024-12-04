@@ -1,0 +1,111 @@
+/* Styling untuk Video Cards */
+.video-card {
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.video-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Container untuk Judul dan Publisher */
+.video-title-container {
+    background-color: #09351b;
+    /* Warna hijau lembut */
+    padding: 20px;
+    border-radius: 12px 12px 0 0;
+    /* Membulatkan bagian atas */
+    color: #fff;
+    position: relative;
+    z-index: 2;
+    /* Menutupi bagian bawah */
+}
+
+.video-title-container h5 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.video-title-container .card-subtitle {
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+/* Container untuk Link, Type, dan Uploaded On */
+.video-details-container {
+    background-color: #f0f0f0;
+    /* Warna netral lembut */
+    padding: 20px;
+    border-radius: 0 0 12px 12px;
+    /* Membulatkan bagian bawah */
+    color: #333;
+    z-index: 1;
+}
+
+.video-details-container p {
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.video-details-container a {
+    text-decoration: none;
+    color: #5c6bc0;
+    font-weight: 500;
+}
+
+.video-details-container a:hover {
+    text-decoration: underline;
+}
+
+/* Styling untuk Hasil Pencarian yang Rapi */
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+/* Responsivitas untuk layout kartu di perangkat kecil */
+@media (max-width: 768px) {
+    .col-md-6 {
+        max-width: 100%;
+    }
+}
+
+/* Tampilan yang lebih rapi */
+.card-body .video-title-container,
+.card-body .video-details-container {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Styling untuk tombol dan link */
+.video-details-container a {
+    color: #0a450c;
+    /* Warna hijau */
+}
+
+.video-details-container a:hover {
+    color: #388e3c;
+    /* Hijau lebih gelap saat hover */
+}
+
+.search-input,
+.filter-dropdown,
+.sort-dropdown {
+    outline: 1px solid #000;
+    /* Black outline with thin thickness */
+    border-radius: 4px;
+    /* Slightly rounded corners */
+}
+
+/* Optional: You can add padding or margin for further spacing */
+.search-input,
+.filter-dropdown,
+.sort-dropdown {
+    padding: 8px 12px;
+}

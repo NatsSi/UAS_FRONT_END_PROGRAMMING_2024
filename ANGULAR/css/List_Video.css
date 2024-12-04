@@ -1,0 +1,56 @@
+/* Title styling */
+h1.display-4 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #000000; /* Hijau tua */
+}
+
+/* List item styles for alternating colors */
+.list-group-item.bg-dark {
+    background-color: #212529 !important; /* Hitam pekat */
+    color: #ffffff !important;
+}
+
+.list-group-item.bg-secondary {
+    background-color: #000000 !important; /* Abu-abu tua */
+    color: #ffffff !important;
+}
+
+/* Button styles */
+.btn {
+    transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+    background-color: #1e7e34;
+    border-color: #1e7e34;
+    transform: scale(1.05);
+}
+
+.btn-outline-success {
+    color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-outline-success:hover {
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+    transform: scale(1.05);
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #b71c1c;
+    border-color: #b71c1c;
+    transform: scale(1.05);
+}
+
+
+.text-success:hover {
+    color: #1e7e34; /* Hijau tua */
+}
