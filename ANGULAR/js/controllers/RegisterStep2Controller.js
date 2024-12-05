@@ -1,7 +1,13 @@
 angular.module('RegisterStep2Controller', ['MembersService'])
     .constant("CSRF_TOKEN", '{{ csrf_token() }}')
     .controller('RegisterStep2Controller', ['$scope', '$http', '$window', '$location', function ($scope, $http, $window, $location) {
-
+ const queryParams = $location.search();
+$scope.email = queryParams.email || ''; 
+$scope.password = queryParams.password || ''; 
+        
+console.log('Email in Step 2:', $scope.email);
+console.log('Password in Step 2:', $scope.password);
+         
         $scope.cards = [
             {
                 id: 1,
@@ -67,16 +73,16 @@ angular.module('RegisterStep2Controller', ['MembersService'])
         $scope.submitForm = function() {
             const activeCard = $scope.cards.find(card => card.active);
             if (activeCard) {
-                // Retrieve email, password, and selected plan
-                const email = $scope.email || ''; // Replace with actual email field binding
-                const password = $scope.password || ''; // Replace with actual password field binding
-                const subscriptionPlan = activeCard.name;
-
-                // Redirect to the next step with query parameters
-                const queryString = `?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}&subscription_plan=${encodeURIComponent(subscriptionPlan)}`;
+                const email = $scope.email || '';
+                const password = $scope.password || '';
+                const subscription_type = activeCard.name;
+        
+                const queryString = `?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}&subscription_plan=${encodeURIComponent(subscription_type)}`;
                 $window.location.href = `#/register-step-3${queryString}`;
+                console.log('Redirecting to Step 3 with:', queryString);
             } else {
                 alert("Please select a subscription plan before proceeding.");
             }
         };
+        
     }]);
