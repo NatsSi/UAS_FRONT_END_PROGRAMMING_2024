@@ -1,6 +1,8 @@
 angular.module('BlogsController', ['BlogsService'])
+    .constant("IMAGE_BASE_URL", "http://127.0.0.1:8001/storage/images/")
     .constant("CSRF_TOKEN", '{{ csrf_token() }}')
-    .controller('BlogsController', ['$scope', '$http', '$window', '$route', '$routeParams', 'BlogsService', function ($scope, $http, $window, $route, $routeParams, BlogsService) {
+    .controller('BlogsController', ['$scope', '$http', '$window', '$route', '$routeParams', 'BlogsService', 'IMAGE_BASE_URL', function ($scope, $http, $window, $route, $routeParams, BlogsService, IMAGE_BASE_URL) {
+
         $scope.formData = {}; //Untuk Read & Update
         $scope.formDataCreate = {}; //Untuk Create
         $scope.data = {}; //Untuk Read
@@ -26,19 +28,27 @@ angular.module('BlogsController', ['BlogsService'])
         //Sort
         $scope.sort = '';
 
-        $scope.isNearestDisabled = true; // Status awal Nearest
-        $scope.isFarthestDisabled = false; // Status awal Farthest
+        $scope.isNewestDisabled = true; // Initial status for Newest
+        $scope.isOldestDisabled = false; // Initial status for Oldest
+
+        $scope.sort = 'asc'; // Default sorting (newest)
+
 
         $scope.toggleDisable = function(button) {
-        if (button === 'nearest') {
-            $scope.isNearestDisabled = true;  // Nonaktifkan tombol Nearest
-            $scope.isFarthestDisabled = false; // Pastikan tombol Farthest tetap aktif
-        } else if (button === 'farthest') {
-            $scope.isFarthestDisabled = true;  // Nonaktifkan tombol Farthest
-            $scope.isNearestDisabled = false; // Pastikan tombol Nearest tetap aktif
-        }
+            if (button === 'newest') {
+                $scope.isNewestDisabled = true; 
+                $scope.isOldestDisabled = false;
+                $scope.sort = 'asc';  
+                $scope.fetchData(); 
+            } else if (button === 'oldest') {
+                $scope.isOldestDisabled = true;  
+                $scope.isNewestDisabled = false; 
+                $scope.sort = 'desc'; 
+                $scope.fetchData(); 
+            }
         };
 
+        
         $scope.blogsJS = function() {
             // Animation fade in
             const items = document.querySelectorAll('.appear');
@@ -107,45 +117,119 @@ angular.module('BlogsController', ['BlogsService'])
             $scope.datas = response.data.data;
         });
     
-        $http.get('http://127.0.0.1:8001/api/v1/blogs/' + $scope.blogId).then(function(response){
-            $scope.data = response.data.blogs;
+        $http.get('http://127.0.0.1:8001/api/v1/blogs/' + $scope.blogId).then(function(response) {
+            const blogData = response.data.blogs;
+        
+            // Replace 'undefined' strings with null
             $scope.formData = {
-                title : $scope.data.attributes.title ,
-                category : $scope.data.attributes.category,
-                date  : $scope.data.attributes.date,
-                sub_message  : $scope.data.attributes.sub_message,
-                author_1  : $scope.data.attributes.author_1,
-                job_author_1  : $scope.data.attributes.job_author_1,
-                image  : $scope.data.attributes.image,
-                section1_title : $scope.data.attributes.section1_title,
-                section1_content : $scope.data.attributes.section1_content, 
-                section2_title : $scope.data.attributes.section2_title, 
-                section2_content : $scope.data.attributes.section2_content, 
-                section3_content : $scope.data.attributes.section3_content,
-                section3_title : $scope.data.attributes.section3_title, 
+                title: blogData.attributes.title,
+                category: blogData.attributes.category,
+                date: blogData.attributes.date ,
+                sub_message: blogData.attributes.sub_message === 'undefined' ? null : blogData.attributes.sub_message,
+                author_1: blogData.attributes.author_1 === 'undefined' ? null : blogData.attributes.author_1,
+                job_author_1: blogData.attributes.job_author_1 === 'undefined' ? null : blogData.attributes.job_author_1,
+                image: blogData.attributes.image ? (IMAGE_BASE_URL + blogData.attributes.image) : null,
+                section1_title: blogData.attributes.section1_title === 'undefined' ? null : blogData.attributes.section1_title,
+                section1_content: blogData.attributes.section1_content === 'undefined' ? null : blogData.attributes.section1_content,
+                section2_title: blogData.attributes.section2_title === 'undefined' ? null : blogData.attributes.section2_title,
+                section2_content: blogData.attributes.section2_content === 'undefined' ? null : blogData.attributes.section2_content,
+                section3_title: blogData.attributes.section3_title === 'undefined' ? null : blogData.attributes.section3_title,
+                section3_content: blogData.attributes.section3_content === 'undefined' ? null : blogData.attributes.section3_content,
+                conclusion: blogData.attributes.conclusion === 'undefined' ? null : blogData.attributes.conclusion
             };
-            $scope.Data = true;
+        
+            console.log("Image name from backend:", blogData.attributes.image);
+            $scope.Data = true; // Indicate data is ready
+        }).catch(function(error) {
+            console.error("Error fetching blog details:", error);
         });
-
+        
+        
         // Create blog
-        $scope.createBlog = function() {
-            BlogsService.createBlog($scope.formDataCreate).then(function(response) {
+            $scope.createBlog = function() {
+            var formData = new FormData();
+            formData.append('title', $scope.formDataCreate.title);
+            formData.append('category', $scope.formDataCreate.category);
+            formData.append('date', $scope.formDataCreate.date);
+            formData.append('sub_message', $scope.formDataCreate.sub_message);
+            formData.append('author_1', $scope.formDataCreate.author_1);
+            formData.append('job_author_1', $scope.formDataCreate.job_author_1);
+            formData.append('section1_title', $scope.formDataCreate.section1_title);
+            formData.append('section1_content', $scope.formDataCreate.section1_content);
+            formData.append('section2_title', $scope.formDataCreate.section2_title);
+            formData.append('section2_content', $scope.formDataCreate.section2_content);
+            formData.append('section3_title', $scope.formDataCreate.section3_title);
+            formData.append('section3_content', $scope.formDataCreate.section3_content);
+            formData.append('conclusion', $scope.formDataCreate.conclusion);
+
+            // Manually append the file input
+            var imageFile = document.getElementById('image').files[0];
+            if (imageFile) {
+                formData.append('image', imageFile);
+            }
+
+             // Send the FormData to the backend
+            $http.post('http://127.0.0.1:8001/api/v1/blogs', formData, {
+                headers: {
+                    'Content-Type': undefined, // Let the browser set the correct content type for FormData
+                    'X-CSRF-TOKEN': $scope.CSRF_TOKEN
+                }
+            }).then(function(response) {
                 alert('Blog created successfully!');
                 $window.location.href = '#/list-blog';
             }).catch(function(error) {
                 alert('Error creating blog: ' + JSON.stringify(error.data.errors));
             });
-        };
+    };
+
 
         // Update blog
         $scope.updateBlog = function(blogId) {
-            BlogsService.updateBlog(blogId, $scope.formData).then(function(response) {
+            blogId = $scope.blogId;
+            if (!blogId) {
+                console.error("Blog ID is missing!");
+                return;
+            }
+        
+            var formData = new FormData();
+            formData.append('title', $scope.formData.title);
+            formData.append('category', $scope.formData.category);
+            formData.append('date', $scope.formData.date);
+            formData.append('sub_message', $scope.formData.sub_message);
+            formData.append('author_1', $scope.formData.author_1);
+            formData.append('job_author_1', $scope.formData.job_author_1);
+            formData.append('section1_title', $scope.formData.section1_title);
+            formData.append('section1_content', $scope.formData.section1_content);
+            formData.append('section2_title', $scope.formData.section2_title);
+            formData.append('section2_content', $scope.formData.section2_content);
+            formData.append('section3_title', $scope.formData.section3_title);
+            formData.append('section3_content', $scope.formData.section3_content);
+            formData.append('conclusion', $scope.formData.conclusion);
+        
+            // Log FormData entries for debugging
+            for (var pair of formData.entries()) {
+                console.log(pair[0] + ": " + pair[1]); // This will log each key-value pair in the FormData object
+            }
+        
+            // Append the image only if it has been updated
+            var imageFile = document.getElementById('image').files[0];
+            if (imageFile) {
+                console.log("Image file selected:", imageFile); // Log the selected image file
+                formData.append('image', imageFile);
+            } else {
+                console.log("No image file selected.");
+            }
+        
+            // Call the BlogsService to update the blog
+            BlogsService.updateBlog($scope.blogId, formData).then(function(response) {
                 alert('Blog updated successfully!');
-                $window.location.href = '#/list-blog';
+                $window.location.href = '#/';
             }).catch(function(error) {
+                console.error('Error updating blog:', error);
                 alert('Error updating blog: ' + JSON.stringify(error.data.errors));
             });
         };
+        
 
         // Delete blog
         $scope.deleteBlog = function(blogId) {
@@ -157,5 +241,19 @@ angular.module('BlogsController', ['BlogsService'])
                     alert('Error deleting blog: ' + JSON.stringify(error.data.errors));
                 });
             }
+        };
+        
+        // Get today's date
+        $scope.getToday = function() {
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+            var yyyy = today.getFullYear();
+            return yyyy + '-' + mm + '-' + dd;
+        };
+
+        // Initialize the date in the form data
+        $scope.formDataCreate = {
+            date: $scope.getToday()
         };
 }]);

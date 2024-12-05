@@ -1,0 +1,95 @@
+<section id="hero-section">
+    <div id="hero-content">
+        <h2>Enlighten your well-being: tips and tricks for a healthy life</h2>
+        <p>Discover the secrets of balancing food and wellness for a radiant life.</p>
+    </div>
+</section>
+
+<section id="newest-article-section">
+    <div id="section-header">
+        <h3>Our Latest Article</h3>
+    </div>
+    <div id="newest-article">
+        <img src="../images/image-blog-1.jpg" alt="Meditation Image" id="newest-article-image">
+        <div id="newest-article-content">
+            <span class="category-label">Health</span>
+            <h4>How to meditate well?</h4>
+            <p>Breathing plays an essential role in our well-being. Follow the advice of Dr. Marie.</p>
+            <a href="/html/Blog_4.html" id="read-article-btn">Read Article</a>
+        </div>
+    </div>
+</section>
+
+<div id="container-three">
+    <div id="header-two" class="appear2">
+        <div class="highlight-text">TO COME</div>
+        <h1>It might be interesting for you</h1>
+        <p>We offer a holistic program that allows you to live incredible experiences and builds you up for a better life, merging the benefits of yoga for a deep transformation of body, mind, and soul.</p>
+    </div>
+
+<section id="blog" class="appear2">
+
+    <!-- Search Field -->
+    <input type="text" id="search" ng-model="searchQuery" ng-keyup="fetchData()" placeholder="Search Events">
+
+    <div class="container mb-2">
+    <div class="row align-items-center">
+        <div class="col-md-4 mb-2">
+            <!-- Search Date Field -->
+            <label for="searchDate" class="form-label">Date</label>
+            <input id="searchDate" type="date" ng-model="date" class="form-control" ng-change="fetchData()">
+        </div>
+        <div class="col-md-4 mb-2">
+            <!-- Filter Field -->
+            <label for="filterCategory" class="form-label">Filter</label>
+            <select id="filterCategory" class="form-select" ng-model="selectedCategory" ng-change="fetchData()">
+                <option value="">All Categories</option>
+                <option ng-repeat="category in categories" value="{{ category }}">{{ category }}</option>
+            </select>
+        </div>
+        <div class="col-md-4 mb-2" style="max-height: 70px;">
+            <!-- Sort Field -->
+            <label for="sort" class="form-label">Sort</label>
+            <nav id="sort" aria-label="Page navigation">
+                <ul class="pagination d-flex text-center">
+                    <li class="page-item flex-fill" ng-model="sort" ng-click="sort='asc'; fetchData(); toggleDisable('newest')" ng-class="{'disabled': isNewestDisabled}"><a href="" class="page-link">Newest</a></li>
+                    <li class="page-item flex-fill" ng-model="sort" ng-click="sort='desc'; fetchData(); toggleDisable('oldest')" ng-class="{'disabled': isOldestDisabled}"><a href="" class="page-link">Oldest</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+    </div>
+    </div>
+
+        <div class="appear3 d-flex justify-content-center" id="event-cards">
+            <div ng-repeat="item in items" class="event-card">
+                <img src="../images/chermiti-mohamed-fk5RgUiYpVw-unsplash.jpg" alt="Tunis Image">
+                <div class="event-date">
+                    <img src="../images/icons8-clock.svg" alt="Clock Icon"> {{ item.attributes.date | date:'MMM d, yyyy'  }}
+                </div>
+                <div class="event-info">
+                    <div class="event-category">{{ item.attributes.category  }}</div>
+                    <div class="event-title">{{ item.attributes.title  }}</div>
+                    <div class="event-description">{{ item.attributes.sub_message  }}</div>
+                    <a href="#/blogs/detail/{{item.id}}" class="btn-participate">
+                        Participate
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+ <!-- Pagination Field -->
+ <nav aria-label="Page navigation" class="d-flex justify-content-center mt-3" id="pagination">
+    <ul class="pagination">
+        <li class="page-item" ng-click="fetchData(1)" ng-if="currentPage > 1"><a href="" class="page-link">First</a></li>
+        <li class="page-item" ng-click="fetchData(currentPage - 1)" ng-if="currentPage > 1"><a href="" class="page-link">&laquo;</a></li>
+        <li class="page-item" ng-repeat="page in pages track by $index" ng-class="{active: page === currentPage}">
+            <a href="" class="page-link" ng-click="fetchData(page)">{{ page }}</a>
+        </li>
+        <li class="page-item" ng-click="fetchData(currentPage + 1)" ng-if="currentPage < totalPages"><a href="" class="page-link">&raquo;</a></li>
+        <li class="page-item" ng-click="fetchData(totalPages)" ng-if="currentPage < totalPages"><a href="" class="page-link">Last</a></li>
+    </ul>
+</nav>
+</div>

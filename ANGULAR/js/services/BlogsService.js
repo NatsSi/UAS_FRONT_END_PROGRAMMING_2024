@@ -6,19 +6,28 @@ angular.module('BlogsService', [])
             createBlog: function(data) {
                 return $http.post(`${baseUrl}/blogs`, data, {
                     headers: {
-                        'Content-Type': 'application/json',
+                        'Content-Type': undefined,
                         'X-CSRF-TOKEN': CSRF_TOKEN,
                     }
                 });
             },
             updateBlog: function(blogId, data) {
+                console.log("Updating blog with ID:", blogId);
+                console.log("Data being sent:", data);
                 return $http.put(`${baseUrl}/blogs/${blogId}`, data, {
                     headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': CSRF_TOKEN,
+                        'Content-Type': undefined,
+                        'X-CSRF-TOKEN': CSRF_TOKEN
                     }
+                }).then(function(response) {
+                    console.log('Blog updated successfully:', response);
+                    return response;
+                }).catch(function(error) {
+                    console.error('Error updating blog:', error);
+                    throw error;
                 });
             },
+            
             deleteBlog: function(blogId) {
                 return $http.delete(`${baseUrl}/blogs/${blogId}`);
             }

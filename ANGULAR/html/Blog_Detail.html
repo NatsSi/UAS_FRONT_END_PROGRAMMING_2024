@@ -1,0 +1,43 @@
+<section id="hero" ng-controller="BlogsController">
+  <div id="hero-content" ng-if="Data">
+      <span id="category-tag">{{ formData.category }}</span>
+      <h1>{{ formData.title }}</h1>
+      <p>{{ formData.sub_message }}</p>
+      <div id="author-info">
+          <div id="author-details">
+              <h3>{{ formData.author_1 }}</h3>
+              <span>{{ formData.job_author_1 }}</span>
+          </div>
+      </div>
+  </div>
+  <div id="hero-image" ng-if="Data">
+    <img ng-src="{{ formData.image || 'default_image.jpg' }}" alt="Hero Image">
+</div>
+</section>
+
+<section id="content" ng-if="Data">
+  <div id="toc">
+      <h3>Table of Contents</h3>
+      <ul>
+          <li><a href="p1">{{ formData.section1_title }}</a></li>
+          <li><a href="p2">{{ formData.section2_title }}</a></li>
+          <li><a href="p3">{{ formData.section3_title }}</a></li>
+          <li><a href="conclusion">Conclusion</a></li>
+      </ul>
+  </div>
+  <div id="main-content">
+      <h2 id="p1">{{ formData.section1_title }}</h2>
+      <p>{{ formData.section1_content }}</p>
+
+      <h2 id="p2">{{ formData.section2_title }}</h2>
+      <p>{{ formData.section2_content }}</p>
+
+      <h2 id="p3">{{ formData.section3_title }}</h2>
+      <p>{{ formData.section3_content }}</p>
+
+      <div id="conclusion">
+          <h3>Conclusion</h3>
+          <p>{{ formData.conclusion }}</p>
+      </div>
+  </div>
+</section>

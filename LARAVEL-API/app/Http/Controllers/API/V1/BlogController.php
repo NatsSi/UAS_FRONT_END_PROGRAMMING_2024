@@ -58,7 +58,7 @@ class BlogController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|unique:blogs|max:255',
-    
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:90000',
         ]);
 
         $blog = Blog::create([
@@ -68,7 +68,7 @@ class BlogController extends Controller
             'sub_message' => $request->input('sub_message'),
             'author_1' => $request->input('author_1'),
             'job_author_1' => $request->input('job_author_1'),
-            'image' => $request->input('image'),
+            'image' => '',
             'section1_title' => $request->input('section1_title'),
             'section1_content' => $request->input('section1_content'),
             'section2_title' => $request->input('section2_title'),
@@ -78,6 +78,14 @@ class BlogController extends Controller
             'conclusion' => $request->input('conclusion'),
 
         ]);
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $image->storeAs('images', $filename, 'public'); 
+            $blog->image = $filename;  // Update the blog record with the filename
+            $blog->save();  // Save the blog with the image path
+        }
 
         return (new BlogResource($blog))
         ->response()
@@ -96,32 +104,42 @@ class BlogController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, Blog $blog)
-    {
-        $validated = $request->validate([
-            'title' => 'max:255'
-        ]);
+{
+    // Log the incoming request to check data
+    \Log::info('Request data:', $request->all());
 
-        $blog->update([
-            'title' => $request->input('title'),
-            'place' => $request->input('place'),
-            'category' => $request->input('category'),
-            'day' => $request->input('day'),
-            'date' => $request->input('date'),
-            'message' => $request->input('message'),
-            'sub_message' => $request->input('sub_message'),
-            'author_1' => $request->input('author_1'),
-            'job_author_1' => $request->input('job_author_1'),
-            'author_2' => $request->input('author_2'),
-            'job_author_2' => $request->input('job_author_2'),
-            'image' => $request->input('image'),
-            'header' => $request->input('header'),
-            'body' => $request->input('body'),
-        ]);
+    // Validate the request data, you can exclude 'image' here as you don't want to change it
+    $validated = $request->validate([
+        'title' => 'max:255', // Add other validation rules as necessary
+        'category' => 'max:255',
+        'date' => 'date',
+        // You can add other fields like sub_message, section titles, etc.
+    ]);
 
-        return (new BlogResource($blog))
+    // Update only the string fields (excluding image)
+    $blog->update([
+        'title' => $request->input('title'),
+        'category' => $request->input('category'),
+        'date' => $request->input('date'),
+        'sub_message' => $request->input('sub_message'),
+        'author_1' => $request->input('author_1'),
+        'job_author_1' => $request->input('job_author_1'),
+        'section1_title' => $request->input('section1_title'),
+        'section1_content' => $request->input('section1_content'),
+        'section2_title' => $request->input('section2_title'),
+        'section2_content' => $request->input('section2_content'),
+        'section3_title' => $request->input('section3_title'),
+        'section3_content' => $request->input('section3_content'),
+        'conclusion' => $request->input('conclusion'),
+    ]);
+
+    // If no image is being sent, you can skip saving/updating the image field.
+    // The image will remain unchanged.
+
+    return (new BlogResource($blog))
         ->response()
         ->setStatusCode(200);
-    }
+}
 
     /**
      * Remove the specified resource from storage.

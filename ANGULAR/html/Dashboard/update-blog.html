@@ -1,0 +1,74 @@
+<div class="container mb-5 mt-3 border rounded" style="width:1000px">
+    <h2 class="text-center mt-1">Update Blog</h2>
+    <form ng-submit="updateBlog()" enctype="multipart/form-data">
+        <label class="form-label" for="title">Title</label><br>
+        <input class="form-control" type="text" id="title" name="title" ng-model="formData.title"><br>
+
+        <label class="form-label" for="category">Category</label>
+        <select class="form-control" id="category" name="category" ng-model="formData.category">
+            <option selected disabled>Select</option>
+            <option value="Health">Health</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Educative">Educative</option>
+        </select><br>
+
+        <label class="form-label" for="date">Date</label><br>
+        <input 
+            class="form-control text-muted" 
+            type="text" 
+            id="date" 
+            name="date" 
+            ng-model="formData.date" 
+            readonly
+            style="background-color: #f8f9fa; color: #6c757d; pointer-events: none; border: 1px solid #ced4da;">
+        <br>
+
+        <label class="form-label" for="sub_message">Sub Message</label><br>
+        <textarea class="form-control" name="sub_message" rows="3" cols="100" ng-model="formData.sub_message"></textarea><br>
+
+        <label class="form-label" for="author_1">Author 1</label><br>
+        <input class="form-control" type="text" id="author_1" name="author_1" ng-model="formData.author_1"><br>
+
+        <label class="form-label" for="job_author_1">Job Author 1</label><br>
+        <input class="form-control" type="text" id="job_author_1" name="job_author_1" ng-model="formData.job_author_1"><br>
+
+        <label class="form-label" for="image">Image</label>
+        <input class="form-control" type="file" id="image" name="image" accept="image/*"><br>
+
+        <label class="form-label" for="section1_title">Section 1 Title</label><br>
+        <input class="form-control" type="text" id="section1_title" name="section1_title" ng-model="formData.section1_title"><br>
+
+        <label class="form-label" for="section1_content">Section 1 Content</label><br>
+        <textarea class="form-control" name="section1_content" rows="4" cols="100" ng-model="formData.section1_content"></textarea><br>
+
+        <button type="button" class="btn mb-3" ng-click="showSection2 = !showSection2" 
+            ng-class="{'btn-success': !showSection2, 'btn-danger': showSection2}">
+            {{ showSection2 ? 'Remove Section 2' : 'Add Section 2' }}
+        </button>
+
+        <div ng-show="showSection2">
+            <label class="form-label" for="section2_title">Section 2 Title</label><br>
+            <input class="form-control" type="text" id="section2_title" name="section2_title" ng-model="formData.section2_title"><br>
+
+            <label class="form-label" for="section2_content">Section 2 Content</label><br>
+            <textarea class="form-control" name="section2_content" rows="4" cols="100" ng-model="formData.section2_content"></textarea><br>
+
+            <button type="button" class="btn mb-3" ng-click="showSection3 = !showSection3" ng-class="{'btn-success': !showSection3, 'btn-danger': showSection3}">
+                {{ showSection3 ? 'Remove Section 3' : 'Add Section 3' }}
+            </button>
+
+            <div ng-show="showSection3">
+                <label class="form-label" for="section3_title">Section 3 Title</label><br>
+                <input class="form-control" type="text" id="section3_title" name="section3_title" ng-model="formData.section3_title"><br>
+
+                <label class="form-label" for="section3_content">Section 3 Content</label><br>
+                <textarea class="form-control" name="section3_content" rows="4" cols="100" ng-model="formData.section3_content"></textarea><br>
+            </div>
+        </div>
+
+        <br><label class="form-label" for="conclusion">Conclusion</label><br>
+        <textarea class="form-control" name="conclusion" rows="4" cols="100" ng-model="formData.conclusion"></textarea><br>
+
+        <input type="submit" value="Update" class="btn btn-primary mb-2">
+    </form>
+</div>

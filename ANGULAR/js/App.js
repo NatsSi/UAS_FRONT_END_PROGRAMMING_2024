@@ -2,7 +2,6 @@ var yogo = angular.module('yogo', [
     'ngRoute', 
     'ngSanitize',
     'NavBarController', 
-    'LoginController',
     'HomeController', 
     'EventsController',
     'BlogsController',
@@ -67,22 +66,9 @@ yogo.config(function ($routeProvider, $locationProvider) {
         css: '../css/Home.css'
     })
     .when('/home_2', {
-        templateUrl: 'Home_2.html', // Home 2 page
+        templateUrl: 'Home_2.html', // Home page
         controller: 'HomeController_2',
         css: '../css/Home_2.css'
-    })
-    .when('/login', {
-        templateUrl: 'Login.html', // Login Page
-        controller: 'LoginController',
-        title: 'Login',
-        css: '../css/Login.css',
-        layout: 'no-footer'
-    })
-    .when('/logout', {
-        templateUrl: 'Home.html', // Logout Page
-        controller: 'LoginController',
-        title: 'Home',
-        css: '../css/Home.css',
     })
     .when('/events', {
         templateUrl: 'Events.html', // Events page
@@ -115,13 +101,13 @@ yogo.config(function ($routeProvider, $locationProvider) {
         templateUrl: 'Blogs.html', // Blogs page
         controller: 'BlogsController',
         title: 'Blogs',
-        css: '../css/Blogs.css'
+        css: '../css/Blog.css'
     })
     .when('/blogs/detail/:id', {
-        templateUrl: 'Blogs_Detail.html', // Blog Detail page
+        templateUrl: 'Blog_Detail.html', // Blog Detail page
         controller: 'BlogsController',
         title: 'Blogs Detail',
-        css: '../css/Blogs_Detail.css'
+        css: '../css/Blog_Detail.css'
     })
     .when('/list-blog', {
         templateUrl: 'list-blog.html', // List Blog page
@@ -138,6 +124,7 @@ yogo.config(function ($routeProvider, $locationProvider) {
         controller: 'BlogsController',
         title: 'Update Blog',
     })
+
     .when('/register', {
         templateUrl: 'Register.html', // REGISTER
         controller: 'RegisterController',
@@ -165,17 +152,17 @@ yogo.config(function ($routeProvider, $locationProvider) {
         css: '../css/Videos.css'
     })
     .when('/list-video', {
-        templateUrl: 'Dashboard/list-video.html', // List Video page
+        templateUrl: 'Dashboard/list-video.html', // List Event page
         controller: 'VideoController',
         css: '../css/List_Video.css'
     })
     .when('/create-video', {
-        templateUrl: 'Dashboard/create-video.html', // Create Video page
+        templateUrl: 'Dashboard/create-video.html', // Create Event page
         controller: 'VideoController',
         css: '../css/Upload_Video.css'
     })
     .when('/update-video', {
-        templateUrl: 'Dashboard/update-video.html', // Update Video page
+        templateUrl: 'Dashboard/update-video.html', // Update Event page
         controller: 'VideoController',
     }) 
     .otherwise({
