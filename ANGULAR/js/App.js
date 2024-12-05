@@ -4,11 +4,13 @@ var yogo = angular.module('yogo', [
     'NavBarController', 
     'HomeController', 
     'EventsController',
+    'BlogsController',
     'RegisterController',
     'RegisterStep1Controller',
     'RegisterStep2Controller',
     'RegisterStep3Controller',
     'EventsService',
+    'BlogsService',
     'MembersService',
     'HomeController_2',
     'VideoController',
@@ -95,6 +97,34 @@ yogo.config(function ($routeProvider, $locationProvider) {
         controller: 'EventsController',
         title: 'Update Event',
     })
+    .when('/blogs', {
+        templateUrl: 'Blogs.html', // Blogs page
+        controller: 'BlogsController',
+        title: 'Blogs',
+        css: '../css/Blogs.css'
+    })
+    .when('/blogs/detail/:id', {
+        templateUrl: 'Blogs_Detail.html', // Blog Detail page
+        controller: 'BlogsController',
+        title: 'Blogs Detail',
+        css: '../css/Blogs_Detail.css'
+    })
+    .when('/list-blog', {
+        templateUrl: 'list-blog.html', // List Blog page
+        controller: 'BlogsController',
+        title: 'List Blog',
+    })
+    .when('/create-blog', {
+        templateUrl: 'create-blog.html', // Create Blog page
+        controller: 'BlogsController',
+        title: 'Create Blog',
+    })
+    .when('/update-blog/:id', {
+        templateUrl: 'update-blog.html', // Update Blog page
+        controller: 'BlogsController',
+        title: 'Update Blog',
+    })
+
     .when('/register', {
         templateUrl: 'Register.html', // REGISTER
         controller: 'RegisterController',

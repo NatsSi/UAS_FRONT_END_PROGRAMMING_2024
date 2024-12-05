@@ -1,0 +1,38 @@
+<div class="container">
+    <h1 class="text-center mt-5" style="margin-bottom: 0px;">All Blog</h1>
+    <div class="text-center mt-1 mb-3">
+        <a href="#/create-blog">
+            <button type="submit" class="btn btn-success">Create Blog</button>
+        </a>
+    </div>
+<div class="table-responsive"  ng-controller="BlogsController">
+    <table class="table table-bordered text-center">
+        <thead class="thead-dark">
+            <tr>
+                <th>No.</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Category</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+            <div>
+            <tr ng-repeat="data in datas">
+                <td>{{ $index + 1 }}</td>
+                <td>{{ data.attributes.title }}</td>
+                <td>{{ data.attributes.author_1 }}</td>
+                <td>{{ data.attributes.category }}</td>
+                <td>{{ data.attributes.date | date:'MMM d, yyyy' }}</td>
+                <td>
+                    <a href="#/update-blog/{{data.id}}"><button type="submit" class="btn btn-sm btn-primary text-light">Edit</button></a>
+                    <button type="submit" class="btn btn-sm btn-danger" ng-click="deleteBlog(data.id)">Delete</button>
+                </td>
+            </tr>          
+        </div>
+        </tbody>
+    </table>
+    </form>
+</div>
+</div>
