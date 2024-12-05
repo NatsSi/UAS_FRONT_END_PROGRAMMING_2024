@@ -1,5 +1,5 @@
 angular.module('NavBarController', [])
-    .controller('NavBarController', ['$scope', '$location', function ($scope, $location) {
+    .controller('NavBarController', ['$scope', '$location', '$window', '$http', function ($scope, $location, $window, $http) {
         $scope.navbarJS = function() {
             const hamburger = document.querySelector("#hamburger");
             const navMenu = document.querySelector("#nav ul");
@@ -20,4 +20,26 @@ angular.module('NavBarController', [])
         };
 
         $scope.navbarJS();
+
+        $scope.logoutMember = function () {
+            $http.post('http://127.0.0.1:8001/api/v1/logout',)
+            .then(function(response) {
+                alert('Anda telah logout.');
+                $window.location.href = 'Index.html#/'; 
+            })
+            .catch(function(error) {
+                alert('Logout Gagal!');
+            });
+        };
+
+        $scope.logoutAdmin = function () {
+            $http.post('http://127.0.0.1:8001/api/v1/logout',)
+            .then(function(response) {
+                alert('Anda telah logout.');
+                $window.location.href = '../Index.html#/'; 
+            })
+            .catch(function(error) {
+                alert('Logout Gagal!');
+            });
+        };
 }]);

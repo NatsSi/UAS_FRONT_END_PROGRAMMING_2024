@@ -2,6 +2,7 @@ var yogo = angular.module('yogo', [
     'ngRoute', 
     'ngSanitize',
     'NavBarController', 
+    'LoginController',
     'HomeController', 
     'EventsController',
     'BlogsController',
@@ -66,9 +67,22 @@ yogo.config(function ($routeProvider, $locationProvider) {
         css: '../css/Home.css'
     })
     .when('/home_2', {
-        templateUrl: 'Home_2.html', // Home page
+        templateUrl: 'Home_2.html', // Home 2 page
         controller: 'HomeController_2',
         css: '../css/Home_2.css'
+    })
+    .when('/login', {
+        templateUrl: 'Login.html', // Login Page
+        controller: 'LoginController',
+        title: 'Login',
+        css: '../css/Login.css',
+        layout: 'no-footer'
+    })
+    .when('/logout', {
+        templateUrl: 'Home.html', // Logout Page
+        controller: 'LoginController',
+        title: 'Home',
+        css: '../css/Home.css',
     })
     .when('/events', {
         templateUrl: 'Events.html', // Events page
@@ -124,7 +138,6 @@ yogo.config(function ($routeProvider, $locationProvider) {
         controller: 'BlogsController',
         title: 'Update Blog',
     })
-
     .when('/register', {
         templateUrl: 'Register.html', // REGISTER
         controller: 'RegisterController',
@@ -152,17 +165,17 @@ yogo.config(function ($routeProvider, $locationProvider) {
         css: '../css/Videos.css'
     })
     .when('/list-video', {
-        templateUrl: 'Dashboard/list-video.html', // List Event page
+        templateUrl: 'Dashboard/list-video.html', // List Video page
         controller: 'VideoController',
         css: '../css/List_Video.css'
     })
     .when('/create-video', {
-        templateUrl: 'Dashboard/create-video.html', // Create Event page
+        templateUrl: 'Dashboard/create-video.html', // Create Video page
         controller: 'VideoController',
         css: '../css/Upload_Video.css'
     })
     .when('/update-video', {
-        templateUrl: 'Dashboard/update-video.html', // Update Event page
+        templateUrl: 'Dashboard/update-video.html', // Update Video page
         controller: 'VideoController',
     }) 
     .otherwise({

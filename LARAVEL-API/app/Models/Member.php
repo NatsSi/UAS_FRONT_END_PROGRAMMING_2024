@@ -3,9 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use MongoDB\Laravel\Auth\User as Authenticatable;
 use MongoDB\Laravel\Eloquent\Model;
 
-class Member extends Model
+class Member extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\MembersFactory> */
     use HasFactory;

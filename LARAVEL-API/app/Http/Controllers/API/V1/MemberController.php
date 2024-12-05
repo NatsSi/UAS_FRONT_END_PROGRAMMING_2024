@@ -7,6 +7,7 @@ use App\Http\Resources\V1\MemberCollection;
 use App\Http\Resources\V1\MemberResource;
 use App\Models\Member;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class MemberController extends Controller
 {
@@ -34,7 +35,7 @@ class MemberController extends Controller
             'email' => $request->input('email'),
             'subscription_type' => $request->input('subscription_type'),
             'payment_method' => $request->input('payment_method'),
-            'password' => $request->input('password'),
+            'password' => Hash::make($request->input('password')),
             'subscription_date' => $request->input('subscription_date'),
          ]);
 

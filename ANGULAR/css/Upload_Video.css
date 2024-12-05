@@ -1,3 +1,7 @@
+html, body {
+    display: block;
+  }
+
 /* Styling untuk container */
 .container {
     max-width: 600px;

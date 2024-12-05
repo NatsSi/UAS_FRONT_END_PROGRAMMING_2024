@@ -1,27 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="../css/Login.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-</head>
-<body>
-    <div id="navbar"></div>
-
     <div id="container">
         <div id="form-container">
-            <form action="/ANGULAR/html/Index_2.html">
+            <form ng-submit="login()">
                 <h1>LOGIN</h1>
                 <div class="infield">
-                    <input type="text" name="email" required="required" id="email"/>
+                    <input type="text" name="email" required="required" ng-model="email" id="email"/>
                     <span>Email</span>
                     <i></i>
                     <label></label>
                 </div>
                 <div class="infield">
-                    <input type="password" name="password" required="required" id="password"/>
+                    <input type="password" name="password" required="required" ng-model="password" id="password"/>
                     <span>Password</span>
                     <i></i>
                     <label></label>
@@ -37,9 +25,3 @@
             <img src="../images/wesley-tingey-57wo9F-r2-A-unsplash.jpg" alt="Ready to start your journey?">
         </div>
     </div>
-
-    <div id="footer"></div>
-    <script src="../js/Login.js"></script>
-    <script src="../js/Navbar.js?v=1" defer></script>
-</body>
-</html>
