@@ -22,15 +22,16 @@
 
 <div id="container-three">
     <div id="header-two" class="appear2">
-        <div class="highlight-text">TO COME</div>
-        <h1>It might be interesting for you</h1>
-        <p>We offer a holistic program that allows you to live incredible experiences and builds you up for a better life, merging the benefits of yoga for a deep transformation of body, mind, and soul.</p>
+        <div class="highlight-text">ALL ARTICLES</div>
+        <h1>Discover the Transformative Power of Yoga</h1>
+        <p>Explore how a holistic approach to well-being can lead to incredible experiences and a better quality of life. This article delves into how yoga merges physical, mental, and spiritual benefits, offering deep transformation for your body, mind, and soul.
+        </p>
     </div>
 
 <section id="blog" class="appear2">
 
     <!-- Search Field -->
-    <input type="text" id="search" ng-model="searchQuery" ng-keyup="fetchData()" placeholder="Search Events">
+    <input type="text" id="search" ng-model="searchQuery" ng-keyup="fetchData()" placeholder="Search Blog">
 
     <div class="container mb-2">
     <div class="row align-items-center">
@@ -63,7 +64,7 @@
 
         <div class="appear3 d-flex justify-content-center" id="event-cards">
             <div ng-repeat="item in items" class="event-card">
-                <img src="../images/chermiti-mohamed-fk5RgUiYpVw-unsplash.jpg" alt="Tunis Image">
+                <img src="../images/image-blog-1.jpg" alt="Tunis Image">
                 <div class="event-date">
                     <img src="../images/icons8-clock.svg" alt="Clock Icon"> {{ item.attributes.date | date:'MMM d, yyyy'  }}
                 </div>
@@ -72,7 +73,7 @@
                     <div class="event-title">{{ item.attributes.title  }}</div>
                     <div class="event-description">{{ item.attributes.sub_message  }}</div>
                     <a href="#/blogs/detail/{{item.id}}" class="btn-participate">
-                        Participate
+                        Read More
                     </a>
                 </div>
             </div>
