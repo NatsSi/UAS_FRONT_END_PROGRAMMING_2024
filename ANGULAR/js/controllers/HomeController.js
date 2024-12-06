@@ -1,5 +1,7 @@
 angular.module('HomeController', [])
     .controller('HomeController', ['$scope', function ($scope) {
+
+        $scope.showFooter = true; 
         $scope.homeJS = function() {
             // Animation fade in
             const items = document.querySelectorAll('.appear');

@@ -80,7 +80,6 @@ yogo.config(function ($routeProvider, $locationProvider) {
         controller: 'LoginController',
         title: 'Login',
         css: '../css/Login.css',
-        layout: 'no-footer'
     })
     .when('/logout', {
         templateUrl: 'Home.html', // Logout Page
@@ -146,7 +145,6 @@ yogo.config(function ($routeProvider, $locationProvider) {
         templateUrl: 'Register.html', // REGISTER
         controller: 'RegisterController',
         css: '../css/Register.css',
-        layout: 'no-footer'
     })
     .when('/register-step-1', {
         templateUrl: 'Register_Step_1.html', // REGISTER
