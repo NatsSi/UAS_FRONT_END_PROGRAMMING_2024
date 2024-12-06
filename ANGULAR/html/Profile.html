@@ -1,0 +1,25 @@
+<div class="container profile-container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <!-- Profile Picture -->
+            <div class="profile-img-container">
+                <img src="https://via.placeholder.com/150" alt="Profile Picture" class="profile-img">
+            </div>
+
+            <!-- Profile Header -->
+            <h1 class="profile-title">Hello, {{ member.email }}</h1>
+
+            <!-- Subscription Info -->
+            <div class="profile-info">
+                <p><strong>Subscription Type:</strong> <span>{{ member.subscription_type || 'N/A' }}</span></p>
+                <p><strong>Subscription Date:</strong> <span>{{ member.subscription_date }}</span></p>
+            </div>
+
+            <!-- Button Actions -->
+            <div class="profile-actions">
+                <button class="btn btn-green">Edit Profile</button>
+                <button class="btn btn-outline-green">Log Out</button>
+            </div>
+        </div>
+    </div>
+</div>

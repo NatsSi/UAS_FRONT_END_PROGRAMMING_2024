@@ -1,6 +1,6 @@
 angular.module('VideoService', [])
     .factory('VideoService', ['$http', 'CSRF_TOKEN', function($http, CSRF_TOKEN) {
-        const baseUrl = 'http://127.0.0.1:8000/api/v1';
+        const baseUrl = 'http://127.0.0.1:8001/api/v1';
 
         return {
             // Mengambil daftar video

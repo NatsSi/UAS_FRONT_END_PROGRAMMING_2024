@@ -29,9 +29,10 @@
             <ul>
                 <li><a href="/ANGULAR/html/Recipes.html" class="nav-link">Recipes</a></li>
                 <li><a href="#/events" class="nav-link" ng-class="{'active-nav': isActive('/events')}">Events</a></li>
-                <li><a href="/ANGULAR/html/Blog.html" class="nav-link">Blog</a></li>
+                <li><a href="#/blogs" class="nav-link">Blog</a></li>
                 <li><a href="#/videos" class="nav-link subscribe">Videos</a></li>
-                <li><a href="#/list-video" class="nav-link subscribe">Admin Videos</a></li>
+                <li><a href="#/mentors" class="nav-link">Mentors</a></li>
+                <li><a href="#/profile/{{ memberEmail }}" class="nav-link">{{ memberEmail }}</a></li>
                 <li><a class="nav-link subscribe" ng-click="logoutMember()">Logout</a></li>
             </ul>
             <div id="hamburger">
@@ -73,12 +74,15 @@
     <script src="../js/controllers/RegisterStep1Controller.js"></script>
     <script src="../js/controllers/RegisterStep2Controller.js"></script>
     <script src="../js/controllers/RegisterStep3Controller.js"></script>
-
+    <script src="../js/controllers/MentorController.js"></script>
+    <script src="../js/controllers/ProfileController.js"></script>
 
     <script src="../js/services/EventsService.js"></script>
     <script src="../js/services/BlogsService.js"></script>
     <script src="../js/services/MembersService.js"></script>
     <script src="../js/services/VideoService.js"></script>
+    <script src="../js/services/MentorService.js"></script>
+    <script src="../js/services/ProfileService.js"></script>
 </body>
 
 </html>

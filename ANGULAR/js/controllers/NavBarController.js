@@ -1,5 +1,15 @@
 angular.module('NavBarController', [])
     .controller('NavBarController', ['$scope', '$location', '$window', '$http', function ($scope, $location, $window, $http) {
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+        // Tampilkan email jika data tersedia
+        if (currentUser) {
+            $scope.memberEmail = currentUser.email;
+        } else {
+            $scope.memberEmail = 'Guest';
+        }
+
+
         $scope.navbarJS = function() {
             const hamburger = document.querySelector("#hamburger");
             const navMenu = document.querySelector("#nav ul");

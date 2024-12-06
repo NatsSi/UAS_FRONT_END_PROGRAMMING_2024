@@ -5,9 +5,9 @@ namespace App\Http\Resources\V1;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class VideoCollection extends ResourceCollection
+class MentorCollection extends ResourceCollection
 {
-    public $collects = VideoResource::class; // Menggunakan VideoResource untuk setiap item
+    public $collects = MentorResource::class; // Menggunakan MentorResource untuk setiap item
 
     public function toArray($request)
     {

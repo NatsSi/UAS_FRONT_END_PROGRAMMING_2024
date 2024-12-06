@@ -50,14 +50,16 @@
     </div>
 
     <!-- Pagination Controls -->
-    <div class="pagination-container d-flex justify-content-between">
+    <div class="pagination-container">
         <!-- Previous Button -->
-        <button ng-click="previousPage()" class="btn btn-secondary" ng-disabled="currentPage === 1">Previous</button>
+        <button ng-click="previousPage()" class="btn btn-secondary mx-3"
+            ng-disabled="currentPage === 1">Previous</button>
 
         <!-- Page Number -->
         <span>Page {{currentPage}} of {{totalPages}}</span>
 
         <!-- Next Button -->
-        <button ng-click="nextPage()" class="btn btn-secondary" ng-disabled="currentPage === totalPages">Next</button>
+        <button ng-click="nextPage()" class="btn btn-secondary mx-3"
+            ng-disabled="currentPage === totalPages">Next</button>
     </div>
 </div>

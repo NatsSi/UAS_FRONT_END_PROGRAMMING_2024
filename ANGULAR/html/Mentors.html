@@ -1,0 +1,56 @@
+<div class="container mt-5" ng-controller="MentorController">
+    <h2 class="text-center mb-4">List of Mentors</h2>
+
+    <!-- Search, Filter, and Sort -->
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <input type="text" class="form-control" placeholder="Search by name" ng-model="searchQuery"
+                ng-change="getMentors()">
+        </div>
+        <div class="col-md-4">
+            <select class="form-control" ng-model="selectedRole" ng-change="getMentors()">
+                <option value="">Select Role</option>
+                <option value="Yoga Practice Mentor">Yoga Practice Mentor</option>
+                <option value="Yoga Advisor">Yoga Advisor</option>
+                <option value="Nutritionist">Nutritionist</option>
+                <!-- Add more roles as needed -->
+            </select>
+        </div>
+        <div class="col-md-4">
+            <select class="form-control" ng-model="sortBy" ng-change="getMentors()">
+                <option value="rating">Sort by Rating</option>
+                <!-- Add more sorting options if needed -->
+            </select>
+        </div>
+    </div>
+
+    <!-- Display mentors -->
+    <div ng-if="mentors && mentors.length > 0" class="row">
+        <div class="card-container">
+            <div class="card mb-4" ng-repeat="mentor in mentors">
+                <!-- Card Mentor -->
+                <div class="card-header">
+                    <h4 class="font-weight-bold">{{ mentor.name }}</h4>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-envelope mx-3"></i> <strong>Email - </strong> {{ mentor.email }}</li>
+                        <li><i class="fas fa-phone mx-3 "></i> <strong>Phone - </strong> {{ mentor.phone_number }}</li>
+                        <li><i class="fas fa-user-tie mx-3"></i> <strong>Role - </strong> {{ mentor.role }}</li>
+                    </ul>
+                </div>
+                <div class="card-footer">
+                    <p><i class="fas fa-star"></i> {{ mentor.rating }} / 5</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Message when no mentors -->
+    <div ng-if="totalMentors > 0" class="text-center">
+        <button ng-disabled="!canGoPrevious()" ng-click="changePage(currentPage - 1)"
+            class="btn btn-primary">Previous</button>
+        <span>Page {{ currentPage }} of {{ totalPages }}</span>
+        <button ng-disabled="!canGoNext()" ng-click="changePage(currentPage + 1)" class="btn btn-primary">Next</button>
+    </div>
+</div>

@@ -1,16 +1,18 @@
-<div class="container mt-5" ng-controller="VideoController">
-    <h1 class="text-center mb-4 display-4">Daftar Video</h1>
+<div class="container mt-5">
+    <h1 class="text-center mb-4 display-4">List Videos</h1>
 
     <div class="d-flex justify-content-end mb-4">
         <a href="#/create-video">
-            <button class="btn btn-success btn-lg rounded-pill shadow">Upload Video</button>
+            <button class="btn btn-success btn-lg rounded-pill shadow">
+                <i class="fas fa-upload"></i> Upload Video
+            </button>
         </a>
     </div>
 
-    <div class="card shadow-lg border-0">
+    <div class="card shadow-lg border-0 mb-4">
         <ul class="list-group list-group-flush">
             <li class="list-group-item p-4 item-style" ng-repeat="video in videos"
-                ng-class="{'bg-dark text-light': $even, 'bg-secondary text-dark': $odd}">
+                ng-class="{'bg-light text-dark': $even, 'bg-white text-dark': $odd}">
                 <div class="d-flex justify-content-between align-items-center flex-wrap">
                     <!-- Info video -->
                     <div class="video-info">
@@ -19,17 +21,21 @@
                         <p class="mb-1"><strong>Type:</strong> {{ video.type }}</p>
                         <p class="mb-0">
                             <strong>Link:</strong>
-                            <a href="{{ video.link }}" target="_blank" class="text-decoration-none text-success">
+                            <a href="{{ video.link }}" target="_blank" class="text-success">
                                 {{ video.link }}
                             </a>
                         </p>
                     </div>
                     <!-- Actions -->
-                    <div class="action-buttons mt-3 mt-md-0">
+                    <div class="action-buttons mt-3 mt-md-0 d-flex gap-3">
                         <a href="#/update-video?id={{video.id}}">
-                            <button class="btn btn-outline-success me-2 shadow-sm">Update</button>
+                            <button class="btn btn-outline-success shadow-sm">
+                                <i class="fas fa-edit"></i> Update
+                            </button>
                         </a>
-                        <button class="btn btn-danger shadow-sm" ng-click="deleteVideo(video.id)">Delete</button>
+                        <button class="btn btn-danger shadow-sm" ng-click="deleteVideo(video.id)">
+                            <i class="fas fa-trash-alt"></i> Delete
+                        </button>
                     </div>
                 </div>
             </li>

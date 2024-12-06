@@ -47,11 +47,20 @@ class MemberController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Member $member)
+    public function show(Request $request, $email)
     {
-        return (new MemberResource($member))->response()->setStatusCode(200);
-    }
+        // Cari member berdasarkan email
+        $member = Member::where('email', $email)->first();
 
+        if (!$member) {
+            return response()->json(['message' => 'Member not found'], 404);
+        }
+
+        // Kembalikan data member
+        return (new MemberResource($member))
+            ->response()
+            ->setStatusCode(200);
+    }
     /**
      * Update the specified resource in storage.
      */

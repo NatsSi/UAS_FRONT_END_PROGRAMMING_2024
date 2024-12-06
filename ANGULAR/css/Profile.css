@@ -1,0 +1,105 @@
+html,
+body {
+    display: block;
+}
+
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+/* Profile container */
+.profile-container {
+    background-color: white;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    margin-top: 50px;
+}
+
+/* Profile Image */
+.profile-img-container {
+    margin-bottom: 20px;
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #2d6a4f;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Profile Title */
+.profile-title {
+    font-size: 2.2rem;
+    color: #2d6a4f;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Profile Info */
+.profile-info {
+    font-size: 1.1rem;
+    margin-top: 20px;
+    color: #4caf50;
+}
+
+.profile-info span {
+    font-weight: bold;
+}
+
+/* Button Styles */
+.profile-actions .btn {
+    font-size: 1rem;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.btn-green {
+    background-color: #2d6a4f;
+    color: white;
+    border: none;
+}
+
+.btn-green:hover {
+    background-color: #4caf50;
+    transform: scale(1.05);
+}
+
+.btn-outline-green {
+    background-color: white;
+    border: 2px solid #2d6a4f;
+    color: #2d6a4f;
+}
+
+.btn-outline-green:hover {
+    background-color: #2d6a4f;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* Media Query: Mobile responsiveness */
+@media (max-width: 768px) {
+    .profile-container {
+        padding: 25px;
+    }
+
+    .profile-title {
+        font-size: 1.8rem;
+    }
+
+    .profile-info {
+        font-size: 1rem;
+    }
+
+    .profile-actions .btn {
+        font-size: 0.9rem;
+    }
+}

@@ -2,6 +2,7 @@ var yogo = angular.module('yogo', [
     'ngRoute', 
     'ngSanitize',
     'NavBarController', 
+    'LoginController',
     'HomeController', 
     'EventsController',
     'BlogsController',
@@ -14,7 +15,11 @@ var yogo = angular.module('yogo', [
     'MembersService',
     'HomeController_2',
     'VideoController',
-    'VideoService'
+    'VideoService',
+    'MentorController',
+    'MentorService',
+    'ProfileController',
+    'ProfileService'
     ]);
 
 yogo.directive('head', ['$rootScope','$compile',
@@ -66,9 +71,22 @@ yogo.config(function ($routeProvider, $locationProvider) {
         css: '../css/Home.css'
     })
     .when('/home_2', {
-        templateUrl: 'Home_2.html', // Home page
+        templateUrl: 'Home_2.html', // Home 2 page
         controller: 'HomeController_2',
         css: '../css/Home_2.css'
+    })
+    .when('/login', {
+        templateUrl: 'Login.html', // Login Page
+        controller: 'LoginController',
+        title: 'Login',
+        css: '../css/Login.css',
+        layout: 'no-footer'
+    })
+    .when('/logout', {
+        templateUrl: 'Home.html', // Logout Page
+        controller: 'LoginController',
+        title: 'Home',
+        css: '../css/Home.css',
     })
     .when('/events', {
         templateUrl: 'Events.html', // Events page
@@ -124,7 +142,6 @@ yogo.config(function ($routeProvider, $locationProvider) {
         controller: 'BlogsController',
         title: 'Update Blog',
     })
-
     .when('/register', {
         templateUrl: 'Register.html', // REGISTER
         controller: 'RegisterController',
@@ -149,22 +166,38 @@ yogo.config(function ($routeProvider, $locationProvider) {
     .when('/videos', {
         templateUrl: 'Videos.html', // Videos
         controller: 'VideoController',
-        css: '../css/Videos.css'
+        css: '../css/Videos.css',
+        title: 'List Video'
     })
     .when('/list-video', {
-        templateUrl: 'Dashboard/list-video.html', // List Event page
+        templateUrl: 'list-video.html', // List Video page
         controller: 'VideoController',
-        css: '../css/List_Video.css'
+        css: '../css/List_Video.css',
+        title: 'Manage Video'
     })
     .when('/create-video', {
-        templateUrl: 'Dashboard/create-video.html', // Create Event page
+        templateUrl: 'create-video.html', // Create Video page
         controller: 'VideoController',
-        css: '../css/Upload_Video.css'
+        css: '../css/Upload_Video.css',
+        title: 'Upload Video'
     })
     .when('/update-video', {
-        templateUrl: 'Dashboard/update-video.html', // Update Event page
+        templateUrl: 'update-video.html', // Update Video page
         controller: 'VideoController',
+        title: 'Update Video'
     }) 
+    .when('/mentors', {
+        templateUrl: 'Mentors.html', // Mentors List page
+        controller: 'MentorController',
+        css: '../css/Mentors.css',
+        title: 'Mentors List'
+    })  
+    .when('/profile/:email', {
+        templateUrl: 'Profile.html',
+        controller: 'ProfileController',
+        css: '../css/Profile.css',
+        title: 'Member Profile'
+    })
     .otherwise({
         redirectTo: '/'
     });

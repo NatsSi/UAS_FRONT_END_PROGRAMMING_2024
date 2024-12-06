@@ -1,0 +1,101 @@
+/* Card Styling */
+
+html, body {
+    display: block;
+}
+
+
+.card {
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: #fff;
+}
+
+/* Hover effect for card */
+.card:hover {
+    transform: translateY(-10px);
+}
+
+/* Header card (Mentor Name) */
+.card-header {
+    padding: 1.5rem;
+    font-size: 1.25rem;
+    background-color: #0d562a;
+    border-radius: 10px 10px 0 0;
+    color: white;
+    text-align: center;
+}
+
+/* Body card (Mentor Info) */
+.card-body {
+    padding: 1.25rem;
+    background-color: #cbdfd3;
+    flex-grow: 1;
+    /* Membuat card body mengisi ruang tersisa */
+}
+
+.card-body ul {
+    padding-left: 0;
+}
+
+.card-body li {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.card-body .fa {
+    margin-right: 10px;
+    color: #0d562a;
+    /* Menyesuaikan warna ikon */
+}
+
+/* Footer card (Rating) */
+.card-footer {
+    padding: 1rem;
+    background-color: #a9c8b5;
+    color: #000;
+    text-align: center;
+    border-radius: 0 0 10px 10px;
+}
+
+/* Styling for the cards container */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+/* Ensuring all cards are the same size */
+.card {
+    flex: 0 0 32%;
+    /* 3 cards per row on large screens */
+    margin-bottom: 2rem;
+}
+
+/* Card styling for small screens */
+@media (max-width: 1200px) {
+    .card {
+        flex: 0 0 48%;
+        /* 2 cards per row on medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        flex: 0 0 100%;
+        /* 1 card per row on small screens */
+    }
+}
+
+/* Pagination Styling */
+.text-center {
+    margin-top: 20px;
+}
+
+.btn-primary {
+    margin: 0 5px;
+}
